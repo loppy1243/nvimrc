@@ -29,4 +29,6 @@ let g:ConqueTerm_CloseOnEnd = 1
 "" LaTeX
 let g:tex_flavor='latex'
 let g:tex_conceal=''
+let g:tex_fold_enabled=1
+let g:tex_nospell=1
 
