@@ -19,6 +19,7 @@ set colorcolumn=101
 set textwidth=0
 set laststatus=2
 " set foldmethod=marker
+set nofoldenable
 set foldlevelstart=0
 set hlsearch
 set incsearch
