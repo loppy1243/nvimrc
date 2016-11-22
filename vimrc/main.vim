@@ -18,6 +18,7 @@ endfunc
 """ Uncategorized
 syntax on
 filetype on
+filetype indent off
 hi ColorColumn ctermbg=Red guibg=DarkRed
 
 """ GUI-specific things
