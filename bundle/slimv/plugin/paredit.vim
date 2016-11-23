@@ -17,8 +17,9 @@ endif
 let g:paredit_loaded = 1
 
 " Needed to load filetype and indent plugins
-filetype plugin on
-filetype indent on
+" Killed cause it messes things off
+" filetype plugin on
+" filetype indent on
 
 " =====================================================================
 "  Global variable definitions
