@@ -31,4 +31,6 @@ let g:tex_flavor='latex'
 let g:tex_conceal=''
 let g:tex_fold_enabled=0
 let g:tex_nospell=1
+let g:Tex_ViewRule_pdf='mupdf'
+let g:Tex_DefaultTargetFormat='pdf'
 
