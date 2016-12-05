@@ -33,4 +33,4 @@ let g:tex_fold_enabled=0
 let g:tex_nospell=1
 let g:Tex_ViewRule_pdf='mupdf'
 let g:Tex_DefaultTargetFormat='pdf'
-
+let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode $* >\dev\null'
