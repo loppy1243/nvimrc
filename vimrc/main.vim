@@ -1,6 +1,9 @@
 " Setup Pathogen
 call pathogen#infect()
 
+""" Disable plugins that override *my* mappings
+nmap <Plug>DisableIMAP_JumpForward <Plug>IMAP_JumpForward
+
 let g:vimrc_dir = '~/.vim/vimrc'
 let g:include_dict = {}
 
