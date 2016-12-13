@@ -42,7 +42,7 @@ call Include(g:vimrc_dir . '/autocmds/main.vim')
 
 unlet g:include_dict
 
-source /usr/share/vim/vim74/ftplugin/man.vim
+source /usr/share/vim/vim80/ftplugin/man.vim
 
 " Fix for abbreviations in lisp with SLIMV
 au BufEnter,Filetype lisp,scheme,racket :silent! iunmap <buffer> <space>
