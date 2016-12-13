@@ -52,6 +52,7 @@ func! MoveToNextBlock()
 
   set nohlsearch
 
+"" WOW I wish I had commented this when I'd known what it does.
   exe "silent! normal! /\\v^\\s*$\<cr>/\\v\\S\<cr>"
 
   if line('.') < l:prev_line
@@ -72,6 +73,7 @@ func! MoveToPreviousBlock()
 
   set nohlsearch
 
+"" (O_O)...
   exe "silent! normal! ?\\v^\\s*$\<cr>?\\v^\\s*$\<cr>/\\v\\S\<cr>"
 
   if line('.') > l:prev_line
