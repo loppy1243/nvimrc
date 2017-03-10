@@ -23,8 +23,8 @@ vnoremap <tab> >
 vnoremap <space><tab> <
 
 "" Commenting
-vnoremap <expr> <leader>c '0<c-v>I' . b:comment_seq . ' <esc>'
-vnoremap <silent> <leader>C :<c-u>call TmpLet('&hlsearch', 0)<cr>:exe 'silent! ''<,''>s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+ //'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
+vnoremap <expr> <leader>c '0<c-v>I' . b:comment_seq . '<esc>'
+vnoremap <silent> <leader>C :<c-u>call TmpLet('&hlsearch', 0)<cr>:exe 'silent! ''<,''>s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+//'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
 
 " Create a fold around the selected lines (assumes there's a comment on the
 " first line). NOTE: This must end the Visual Mode section because it contains
