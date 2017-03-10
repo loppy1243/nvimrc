@@ -1,6 +1,6 @@
 let s:tmplet_cache = {}
 
-"" Exand str as if it were expanded by map; as such, str should contain no
+"" Expand str as if it were expanded by map; as such, str should contain no
 "" whitespace.
 "" FIXME, DOES NOT WORK PROPERLY
 func! MapExpand(str)

@@ -79,9 +79,9 @@ nnoremap > @q
 nnoremap ` :exe 'buffer ' . bufnr('#')<cr>
 
 "" Commenting
-nnoremap <expr> <leader>c 'gI' . b:comment_seq . ' <esc>'
+nnoremap <expr> <leader>c 'gI' . b:comment_seq . '<esc>'
 " Uncomment
-nnoremap <silent> <leader>C :call TmpLet('&hlsearch', 0)<cr>:exe ':silent! s/\V\^\(' . b:comment_seq . '\)\+ //'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
+nnoremap <silent> <leader>C :call TmpLet('&hlsearch', 0)<cr>:exe ':silent! s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+//'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
 
 " Convenient mark jump
 nnoremap MM 'm

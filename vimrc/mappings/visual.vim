@@ -12,7 +12,6 @@ vnoremap J <c-f>
 vnoremap K <c-b>
 
 "" Move by units delimited by whitespace
-"" FIXME: Opposite action cancels the first.
 vnoremap <c-h> omb<esc>`<:call MoveToPreviousChunk()<cr>:exe 'normal! mc`b' . visualmode() . '`c'<cr>
 vnoremap <c-l> omb<esc>`>:call MoveToNextChunk()<cr>:exe 'normal! mc`b' . visualmode() . '`c'<cr>
 vnoremap <c-j> omb<esc>`>:call MoveToNextBlock()<cr>:exe 'normal! mc`b' . visualmode() . '`c'<cr>
@@ -25,7 +24,7 @@ vnoremap <space><tab> <
 
 "" Commenting
 vnoremap <expr> <leader>c '0<c-v>I' . b:comment_seq . ' <esc>'
-vnoremap <silent> <leader>C :<c-u>call TmpLet('&hlsearch', 0)<cr>:exe 'silent! ''<,''>s/\V\^\(' . b:comment_seq . '\)\+ //'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
+vnoremap <silent> <leader>C :<c-u>call TmpLet('&hlsearch', 0)<cr>:exe 'silent! ''<,''>s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+ //'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
 
 " Create a fold around the selected lines (assumes there's a comment on the
 " first line). NOTE: This must end the Visual Mode section because it contains

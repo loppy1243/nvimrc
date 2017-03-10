@@ -1,6 +1,7 @@
 augroup rust
   au!
   au Filetype rust let b:comment_seq = '//'
+  au Filetype rust let b:comment_esc = '/'
   au Filetype rust setlocal tabstop=4
   au Filetype rust compiler cargo
   au Filetype rust nnoremap <buffer> <localleader>c :make build<cr>
