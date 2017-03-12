@@ -77,6 +77,10 @@ nnoremap > @q
 
 " Quickly swap between current and previously selected buffer
 nnoremap ` :exe 'buffer ' . bufnr('#')<cr>
+" Next buffer.
+nnoremap ~ :bn<cr>
+" Previous buffer.
+nnoremap <m-~> :bN<CR>
 
 "" Commenting
 nnoremap <expr> <leader>c 'gI' . b:comment_seq . '<esc>'
