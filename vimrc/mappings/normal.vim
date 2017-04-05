@@ -100,3 +100,13 @@ nnoremap <leader>Sl :rightbelow vnew<cr>:ConqueTerm zsh<cr>
 nnoremap <leader>Sj :belowright new<cr>:ConqueTerm zsh<cr>
 nnoremap <leader>Sk :aboveleft new<cr>:ConqueTerm zsh<cr>
 
+"" Delete the surrounding brackets.
+nnoremap <leader>d( ma[(mb])x`bx`a
+nnoremap <leader>d{ ma[{mb]}x`bx`a
+nnoremap <leader>d[ mava[<esc>`<x`>x`a
+nnoremap <leader>d< mava<<esc>`<x`>x`a
+
+nnoremap <leader>d) ma[(mb])x`bx`a
+nnoremap <leader>d} ma[{mb]}x`bx`a
+nnoremap <leader>d] mava[<esc>`<x`>x`a
+nnoremap <leader>d> mava<<esc>`<x`>x`a
