@@ -13,7 +13,7 @@ endfunc
 
 func! LatexMakeBlock(m, arg)
   if a:m == 'n'
-    exe 'normal! o\begin{' .  a:arg . "}\<cr>" . '\end{' . a:arg . "}\<esc>O"
+    exe 'normal! o\begin{' .  a:arg . "}\<cr>" . '\end{' . a:arg . "}\<esc>"
   else
     exe "normal! '<0" . a:m . "`>$c\\begin{" . a:arg . "}\<esc>gpO" . '\end{' . a:arg . "}\<esc>"
   endif
