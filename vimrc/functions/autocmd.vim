@@ -18,3 +18,17 @@ func! LatexMakeBlock(m, arg)
     exe "normal! '<0" . a:m . "`>$c\\begin{" . a:arg . "}\<esc>gpO" . '\end{' . a:arg . "}\<esc>"
   endif
 endfunc
+
+func! NextOpeningParen()
+  let l:hlstate = &hlsearch
+  set hlsearch=0
+  exe "normal! /(\<cr>"
+  let &hlsearch = l:hlstate
+endfunc
+
+func! PrevOpeningParen()
+  let l:hlstate = &hlsearch
+  set hlsearch=0
+  exe "normal! ?(\<cr>"
+  let &hlsearch = l:hlstate
+endfunc
