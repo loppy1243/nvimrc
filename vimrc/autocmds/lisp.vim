@@ -1,4 +1,3 @@
-
 augroup lisp
   au!
   au BufNewFile,BufReadPost *.asd setlocal filetype=lisp
