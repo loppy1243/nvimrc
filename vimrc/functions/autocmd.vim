@@ -21,14 +21,16 @@ endfunc
 
 func! NextOpeningParen()
   let l:hlstate = &hlsearch
-  set hlsearch=0
-  exe "normal! /(\<cr>"
+  set nohlsearch
+  exe 'normal!' "/(\<cr>"
+  nohlsearch
   let &hlsearch = l:hlstate
 endfunc
 
 func! PrevOpeningParen()
   let l:hlstate = &hlsearch
-  set hlsearch=0
-  exe "normal! ?(\<cr>"
+  set nohlsearch
+  exe 'normal!' "?(\<cr>"
+  nohlsearch
   let &hlsearch = l:hlstate
 endfunc
