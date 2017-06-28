@@ -17,10 +17,11 @@ let g:slimv_leader = maplocalleader
 let g:slimv_repl_simple_eval = 0
 let g:slimv_repl_wrap = 0
 let g:slimv_repl_split = 0
-let g:paredit_leader = maplocalleader
 let g:slimv_lisp = '/usr/bin/sbcl'
 let g:slimv_preferred = 'sbcl'
 let g:slimv_repl_syntax = 1
+let g:paredit_leader = maplocalleader
+let g:paredit_shortmaps = 1
 
 "" indentLine
 let g:indentLine_faster = 1
