@@ -1,0 +1,6 @@
+[submodule "bundle/julia-vim"]
+	path = bundle/julia-vim
+	url = git://github.com/JuliaEditorSupport/julia-vim.git
+[submodule "bundle/vim-toml"]
+	path = bundle/vim-toml
+	url = git://github.com/cespare/vim-toml
