@@ -4,9 +4,6 @@
 [submodule "bundle/vim-toml"]
 	path = bundle/vim-toml
 	url = git://github.com/cespare/vim-toml
-[submodule "bundle/vim-parinfer"]
-	path = bundle/vim-parinfer
-	url = git://github.com/bhurlow/vim-parinfer.git
 [submodule "bundle/idris-vim"]
 	path = bundle/idris-vim
 	url = https://github.com/idris-hackers/idris-vim
