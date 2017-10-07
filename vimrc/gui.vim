@@ -21,7 +21,7 @@ hi Type guifg=Green
 hi Underlined guifg=Blue
 hi Todo guifg=Black
 
-set guifont=Liberation\ Mono\ 15
+set guifont=Fira\ Code\ Medium\ 16
 " No toolbar
 set guioptions-=T
 " No scrollbar
