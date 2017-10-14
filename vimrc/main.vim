@@ -18,12 +18,6 @@ func! Include(file)
   endif
 endfunc
 
-""" Uncategorized
-syntax on
-filetype on
-filetype indent off
-hi ColorColumn ctermbg=Red guibg=DarkRed
-
 """ GUI-specific things
 if has('gui_running')
   call Include(g:vimrc_dir . '/gui.vim')
@@ -52,6 +46,12 @@ au BufEnter,Filetype lisp,scheme,racket :silent! iunmap <buffer> <space>
 " Fix for racket K
 au Filetype racket :silent! nunmap <buffer> K
 
-" Things keep getting highlighted...
-nohlsearch
+""" Uncategorized
+syntax on
+filetype on
+filetype indent off
+hi ColorColumn ctermbg=Red guibg=DarkRed
 
+" Things keep getting highlighted...
+"
+nohlsearch
