@@ -6,10 +6,9 @@ augroup latex
   " Create begin/end block
   au Filetype tex command! -nargs=1 LatexMakeBlockNormal call LatexMakeBlock('n', <f-args>)
   au Filetype tex command! -nargs=1 LatexMakeBlockVisual call LatexMakeBlock(visualmode(), <f-args>)
-  au Filetype tex command! -nargs=1 LatexMakeBlockInsert call LatexMakeBlock('i', <f-args>)
   au Filetype tex command! -nargs=1 LatexMakeBlockInline call LatexMakeBlock('l', <f-args>)
   au Filetype tex nnoremap <localleader><localleader> :LatexMakeBlockNormal<space>
   au Filetype tex vnoremap <localleader><localleader> :<c-u>LatexMakeBlockVisual<space>
-  au Filetype tex inoremap <C-\> :LatexMakeBlockInsert<space>
+  au Filetype tex inoremap <C-\> <esc>:LatexMakeBlockNormal<space>
   au Filetype tex nnoremap <localleader>a :LatexMakeBlockInline<space>
 augroup END
