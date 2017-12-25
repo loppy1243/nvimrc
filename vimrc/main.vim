@@ -2,7 +2,11 @@
 """ FIXME: This still necessary?
 nmap <Plug>DisableIMAP_JumpForward <Plug>IMAP_JumpForward
 
-let g:vimrc_dir = '~/.vim/vimrc'
+if has('nvim')
+  let g:vimrc_dir = '~/.config/nvim/vimrc'
+else
+  let g:vimrc_dir = '~/.vim/vimrc'
+endif
 let g:include_dict = {}
 
 func! Source(file)
