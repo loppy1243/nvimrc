@@ -1,12 +1,12 @@
 [submodule "bundle/julia-vim"]
-	path = bundle/julia-vim
+	path = plugin/julia-vim
 	url = git://github.com/JuliaEditorSupport/julia-vim.git
 [submodule "bundle/vim-toml"]
-	path = bundle/vim-toml
+	path = plugin/vim-toml
 	url = git://github.com/cespare/vim-toml
 [submodule "bundle/idris-vim"]
-	path = bundle/idris-vim
+	path = plugin/idris-vim
 	url = https://github.com/idris-hackers/idris-vim
 [submodule "bundle/vim-slime"]
-	path = bundle/vim-slime
+	path = plugin/vim-slime
 	url = https://github.com/jpalardy/vim-slime

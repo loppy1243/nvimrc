@@ -1,7 +1,5 @@
-" Setup Pathogen
-call pathogen#infect()
-
 """ Disable plugins that override *my* mappings
+""" FIXME: This still necessary?
 nmap <Plug>DisableIMAP_JumpForward <Plug>IMAP_JumpForward
 
 let g:vimrc_dir = '~/.vim/vimrc'
@@ -53,5 +51,4 @@ filetype indent off
 hi ColorColumn ctermbg=Red guibg=DarkRed
 
 " Things keep getting highlighted...
-"
 nohlsearch
