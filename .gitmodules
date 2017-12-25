@@ -1,12 +1,12 @@
 [submodule "bundle/julia-vim"]
-	path = pack/julia-vim/start/julia-vim
+	path = pack/git-submodules/start/julia-vim
 	url = git://github.com/JuliaEditorSupport/julia-vim.git
 [submodule "bundle/vim-toml"]
-	path = pack/vim-toml/start/vim-toml
+	path = pack/git-submodules/start/vim-toml
 	url = git://github.com/cespare/vim-toml
 [submodule "bundle/idris-vim"]
-	path = pack/idris-vim/start/idris-vim
+	path = pack/git-submodules/start/idris-vim
 	url = https://github.com/idris-hackers/idris-vim
 [submodule "bundle/vim-slime"]
-	path = pack/vim-slime/start/vim-slime
+	path = pack/git-submodules/start/vim-slime
 	url = https://github.com/jpalardy/vim-slime
