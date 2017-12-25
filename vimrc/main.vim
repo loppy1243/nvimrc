@@ -39,8 +39,6 @@ unlet g:include_dict
 
 source /usr/share/vim/vim80/ftplugin/man.vim
 
-" Fix for abbreviations in lisp with SLIMV
-au BufEnter,Filetype lisp,scheme,racket :silent! iunmap <buffer> <space>
 " Fix for racket K
 au Filetype racket :silent! nunmap <buffer> K
 
