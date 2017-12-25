@@ -50,7 +50,6 @@ set statusline+=%{vimrc#FiletypeStatus()}
 set statusline+=\ -\ (%04.4l,%03.3c,%05.5o)/%L
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Variables.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -74,6 +73,11 @@ let g:tex_fold_enabled = 0
 let g:tex_nospell = 1
 let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
+
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+  let $NVIM_LISTEN_ADDRESS = '/tmp/nvimsocket'
+endif
 
 
 endif
