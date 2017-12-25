@@ -13,7 +13,7 @@ func! vimrc#DashesForFold(end_str)
     " TODO, if ever
   endif
 endfunc
-
+ 
 "" Swaps the current window with the window placed in the h/j/k/l direction
 "" dir.
 func! vimrc#SwapWindowInDirection(dir)
@@ -113,7 +113,7 @@ let s:tmplet_cache = {}
 "" Expand str as if it were expanded by map; as such, str should contain no
 "" whitespace.
 "" FIXME, DOES NOT WORK PROPERLY
-func! MapExpand(str)
+func! vimrc#MapExpand(str)
   let l:prev_mapping = maparg(a:str, 'n')
   exe 'nnoremap ' . a:str . ' ' . a:str
   let l:ret = maparg(a:str, 'n')
@@ -127,23 +127,24 @@ func! MapExpand(str)
   return l:ret
 endfunc
 
-func! SingleQuote(str)
+func! vimrc#SingleQuote(str)
   return "'" . substitute(a:str, "'", "''", 'g') . "'"
 endfunc
 
 "" Temporary let. Only works for global, script, and option variables.
-func! TmpLet(var, val)
+func! vimrc#TmpLet(var, val)
   exe "let s:tmplet_cache['" . a:var . "'] = " . a:var
   exe 'let ' . a:var . ' = a:val'
 endfunc
 
 "" Restore Temporary Let
-func! RestoreTmpLet(var)
+func! vimrc#RestoreTmpLet(var)
   exe 'let ' . a:var . " = s:tmplet_cache['" . a:var . "']"
   exe "unlet s:tmplet_cache['" . a:var . "']"
+endfunc
 
 
-func! DoubleQuoteOperator(type)
+func! vimrc#DoubleQuoteOperator(type)
   if a:type ==# 'char'
     exe "normal! `[v`]\<esc>`<i\"\<esc>`>la\"\<esc>"
   elseif a:type ==# 'line'
@@ -159,7 +160,7 @@ func! DoubleQuoteOperator(type)
   endif
 endfunc
 
-func! SingleQuoteOperator(type)
+func! vimrc#SingleQuoteOperator(type)
   if a:type ==# 'char'
     exe "normal! `[v`]\<esc>`<i'\<esc>`>la'\<esc>"
   elseif a:type ==# 'line'
@@ -178,7 +179,7 @@ endfunc
 
 "" Returns "[-]" if the function is not 'modifiable',
 "" "---" if it has not been 'modified', and "[+]" if it has.
-func! IsModifiedStatus()
+func! vimrc#IsModifiedStatus()
   if !&modifiable
     return '[-]'
   elseif &modified
@@ -190,18 +191,10 @@ endfunc
 
 "" Returns "[&filetype]" if 'filetype' is set and
 "" '---' otherwise.
-func! FiletypeStatus()
+func! vimrc#FiletypeStatus()
   if &filetype !=# ''
     return '[' . &filetype . ']'
   else
     return '---'
-  endif
-endfunc
-
-func! SetZoomWinStatus(state)
-  if a:state
-    let g:ZoomWin_status = 'Zoomed'
-  else
-    let g:ZoomWin_status = 'Normal'
   endif
 endfunc
