@@ -24,3 +24,10 @@ func! FiletypeStatus()
   endif
 endfunc
 
+func! SetZoomWinStatus(state)
+  if a:state
+    let g:ZoomWin_status = 'Zoomed'
+  else
+    let g:ZoomWin_status = 'Normal'
+  endif
+endfunc
