@@ -106,4 +106,3 @@ func! AlignToMark(mode_str)
     echom 'Invalid mode for AlignToMark!'
   endif
 endfunc
-

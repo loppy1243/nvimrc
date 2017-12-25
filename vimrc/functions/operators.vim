@@ -33,4 +33,3 @@ func! SingleQuoteOperator(type)
     echom 'The world has ended.'
   endif
 endfunc
-

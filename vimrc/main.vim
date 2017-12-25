@@ -11,7 +11,7 @@ let g:include_dict = {}
 
 func! Source(file)
   exe 'source ' . a:file
-endfunc
+    endfunc
 
 func! Include(file)
   if !(exists('g:include_dict[a:file]') && g:include_dict[a:file])
@@ -19,15 +19,6 @@ func! Include(file)
     call Source(a:file)
   endif
 endfunc
-
-""" GUI-specific things
-if has('gui_running')
-  call Include(g:vimrc_dir . '/gui.vim')
-else
-  hi Folded ctermbg=Blue ctermfg=Gray
-  let g:indentLine_char = '|'
-  let g:indentLine_color_tty_dark = 0
-endif
 
 """ Outsourcing
 " Options (Sets)
@@ -39,10 +30,10 @@ call Include(g:vimrc_dir . '/mappings/main.vim')
 
 unlet g:include_dict
 
-source /usr/share/vim/vim80/ftplugin/man.vim
+" source /usr/share/vim/vim80/ftplugin/man.vim
 
 " Fix for racket K
-au Filetype racket :silent! nunmap <buffer> K
+" au Filetype racket :silent! nunmap <buffer> K
 
 """ Uncategorized
 syntax on

@@ -32,4 +32,3 @@ func! RestoreTmpLet(var)
   exe 'let ' . a:var . " = s:tmplet_cache['" . a:var . "']"
   exe "unlet s:tmplet_cache['" . a:var . "']"
 endfunc
-

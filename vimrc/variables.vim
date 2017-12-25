@@ -2,6 +2,10 @@
 """" Variables.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if exists('s:executed')
+let s:executed = 1
+
+
 "" Leaders
 let mapleader = ','
 let maplocalleader = '\'
@@ -25,3 +29,6 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 "" ZoomWin
 let g:ZoomWin_status = 'Normal'
 let g:ZoomWin_funcref = function("SetZoomWinStatus")
+
+
+endif

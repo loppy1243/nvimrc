@@ -13,10 +13,10 @@ nnoremap J <c-f>
 nnoremap K <c-b>
 
 "" Move by units delimited by whitespace
-nnoremap <c-h> :call MoveToPreviousChunk()<cr>
-nnoremap <c-l> :call MoveToNextChunk()<cr>
-nnoremap <c-j> :call MoveToNextBlock()<cr>
-nnoremap <c-k> :call MoveToPreviousBlock()<cr>
+nnoremap <c-h> :call vimrc#MoveToPreviousChunk()<cr>
+nnoremap <c-l> :call vimrc#MoveToNextChunk()<cr>
+nnoremap <c-j> :call vimrc#MoveToNextBlock()<cr>
+nnoremap <c-k> :call vimrc#MoveToPreviousBlock()<cr>
 
 " Join line to line below
 nnoremap <leader>j J
@@ -67,10 +67,10 @@ nnoremap <leader>W :match<cr>
 nnoremap <leader>dw :%s/\v\s+$//<cr>
 
 "" Swap windows in the h,j,k,l directions
-nnoremap <c-w>sh :call SwapWindowInDirection('h')<cr>
-nnoremap <c-w>sj :call SwapWindowInDirection('j')<cr>
-nnoremap <c-w>sk :call SwapWindowInDirection('k')<cr>
-nnoremap <c-w>sl :call SwapWindowInDirection('l')<cr>
+nnoremap <c-w>sh :call vimrc#SwapWindowInDirection('h')<cr>
+nnoremap <c-w>sj :call vimrc#SwapWindowInDirection('j')<cr>
+nnoremap <c-w>sk :call vimrc#SwapWindowInDirection('k')<cr>
+nnoremap <c-w>sl :call vimrc#SwapWindowInDirection('l')<cr>
 
 " Quick macro access; uses macro 'q'.
 nnoremap > @q
@@ -85,20 +85,20 @@ nnoremap <m-~> :bN<CR>
 "" Commenting
 nnoremap <expr> <leader>c 'gI' . b:comment_seq . '<esc>'
 " Uncomment
-nnoremap <silent> <leader>C :call TmpLet('&hlsearch', 0)<cr>:exe ':silent! s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+//'<cr>:nohlsearch<cr>:call RestoreTmpLet('&hlsearch')<cr>
+nnoremap <silent> <leader>C :call vimrc#TmpLet('&hlsearch', 0)<cr>:exe ':silent! s/\V\^\(' . escape(b:comment_seq, b:comment_esc) . '\)\+//'<cr>:nohlsearch<cr>:call vimrc#RestoreTmpLet('&hlsearch')<cr>
 
 " Convenient mark jump
 nnoremap MM 'm
 
 " Column align to column of specified mark from current position
-nnoremap <leader>a :call AlignToMark('n')<cr>
+nnoremap <leader>a :call vimrc#AlignToMark('n')<cr>
 
 "" Conque mappings
 "" Generate windows
-nnoremap <leader>Sh :lefabove vnew<cr>:ConqueTerm zsh<cr>
-nnoremap <leader>Sl :rightbelow vnew<cr>:ConqueTerm zsh<cr>
-nnoremap <leader>Sj :belowright new<cr>:ConqueTerm zsh<cr>
-nnoremap <leader>Sk :aboveleft new<cr>:ConqueTerm zsh<cr>
+nnoremap <leader>Sh :lefabove vnew<cr>:terminal<cr>
+nnoremap <leader>Sl :rightbelow vnew<cr>:terminal<cr>
+nnoremap <leader>Sj :belowright new<cr>:terminal<cr>
+nnoremap <leader>Sk :aboveleft new<cr>:terminal<cr>
 
 "" Delete the surrounding brackets.
 nnoremap <leader>d( ma[(mb])x`bx`a

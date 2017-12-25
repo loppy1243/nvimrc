@@ -4,4 +4,3 @@
 
 " |A| |L|ine
 onoremap al :<c-u>normal! V<cr>
-

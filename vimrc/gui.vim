@@ -31,4 +31,3 @@ set guioptions-=m
 
 "" indentLine
 let g:indentLine_char = '┊'
-

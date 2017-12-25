@@ -2,8 +2,8 @@
 """"" All things option.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('s:executed')
-
 let s:executed = 1
+
 
 call Include(g:vimrc_dir . '/functions/statusline.vim')
 
@@ -34,12 +34,11 @@ set grepprg=grep\ -nH\ $*
 " Buffer number and file name
 set statusline=[%n]\ %.20F
 " Whether or not the buffer's been modified
-set statusline+=\ %{IsModifiedStatus()}
+set statusline+=\ %{vimrc#IsModifiedStatus()}
 " 'filetype'
-set statusline+=%{FiletypeStatus()}
+set statusline+=%{vimrc#FiletypeStatus()}
 " (line_number, column_number)/number_of_lines
 set statusline+=\ -\ (%04.4l,%03.3c,%05.5o)/%L
-" Whether zoomed in on window with ZoomWin
-set statusline+=%=[%{g:ZoomWin_status}]
-endif
 
+
+endif
