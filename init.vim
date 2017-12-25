@@ -75,9 +75,5 @@ let g:tex_nospell = 1
 let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
-"" ZoomWin
-let g:ZoomWin_status = 'Normal'
-let g:ZoomWin_funcref = function("SetZoomWinStatus")
-
 
 endif
