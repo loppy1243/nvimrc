@@ -4,4 +4,17 @@ if ! [ -e ~/.config ]; then
   mkdir ~/.config
 fi
 
-ln -iTs $(readlink -en $(dirname "$0")) ~/.config/nvim
+if [ -e ~/.config/nvim ]; then
+  if [ -L ~/.config/nvim -o -z "$(ls -A $HOME/.config/nvim)" ]; then
+    echo -n "$HOME/.config/nvim exists. Would you like to replace it? "
+    read response
+    if [ $response = 'y' -o $response = 'Y' ]; then
+      rm -d ~/.config/nvim
+      ln -Ts $(readlink -en $(dirname "$0")) ~/.config/nvim
+    fi
+  elif ! [ -L ~/.config/nvim ]; then
+    echo "$HOME/.config/nvim is not a symlink and not empty. Figure it out yourself."
+  fi
+else
+  ln -Ts $(readlink -en $(dirname "$0")) ~/.config/nvim
+fi
