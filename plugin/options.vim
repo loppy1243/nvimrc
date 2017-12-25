@@ -5,8 +5,6 @@ if !exists('s:executed')
 let s:executed = 1
 
 
-call Include(g:vimrc_dir . '/functions/statusline.vim')
-
 set number
 set numberwidth=4
 set tabstop=2
