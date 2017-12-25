@@ -36,8 +36,6 @@ call Include(g:vimrc_dir . '/options.vim')
 call Include(g:vimrc_dir . '/variables.vim')
 " Mappings
 call Include(g:vimrc_dir . '/mappings/main.vim')
-" Autocmds
-call Include(g:vimrc_dir . '/autocmds/main.vim')
 
 unlet g:include_dict
 

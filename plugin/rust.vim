@@ -11,5 +11,5 @@ endfunc
 
 augroup rust
   au!
-  au Filetype rust call RustSetup()
+  au Filetype rust call s:RustSetup()
 augroup END

@@ -12,6 +12,6 @@ endfunc
 
 augroup lisp
   au!
-  au Filetype lisp,racket,scheme call LispSetup()
-  au Filetype racket call RacketSetup()
+  au Filetype lisp,racket,scheme call s:LispSetup()
+  au Filetype racket call s:RacketSetup()
 augroup END

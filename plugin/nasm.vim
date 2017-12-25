@@ -5,5 +5,5 @@ endfunc
 
 augroup nasm
   au!
-  au Filetype nasm call NasmSetup()
+  au Filetype nasm call s:NasmSetup()
 augroup END

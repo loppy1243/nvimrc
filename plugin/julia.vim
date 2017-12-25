@@ -6,5 +6,5 @@ endfunc
 
 augroup julia
   au!
-  au Filetype julia call JuliaSetup()
+  au Filetype julia call s:JuliaSetup()
 augroup END

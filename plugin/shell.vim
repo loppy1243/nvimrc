@@ -5,5 +5,5 @@ endfunc
 
 augroup shell
   au!
-  au Filetype zsh,bash,sh,crontab call ShellSetup()
+  au Filetype zsh,bash,sh,crontab call s:ShellSetup()
 augroup END

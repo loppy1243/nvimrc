@@ -5,5 +5,5 @@ endfunc
 
 augroup vimscript
   au!
-  au Filetype vim call VimscriptSetup()
+  au Filetype vim call s:VimscriptSetup()
 augroup END

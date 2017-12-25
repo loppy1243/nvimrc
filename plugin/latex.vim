@@ -11,5 +11,5 @@ endfunc
 
 augroup latex
   au!
-  au Filetype tex call LatexSetup()
+  au Filetype tex call s:LatexSetup()
 augroup END
