@@ -2,9 +2,6 @@
 """"" Visual Mode mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call Include(g:vimrc_dir . '/variables.vim')
-call Include(g:vimrc_dir . '/functions/mappings.vim')
-
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 vnoremap H ^
 vnoremap L $

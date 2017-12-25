@@ -2,10 +2,6 @@
 """"" Normal Mode mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call Include(g:vimrc_dir . '/variables.vim')
-call Include(g:vimrc_dir . '/functions/mappings.vim')
-call Include(g:vimrc_dir . '/functions/misc.vim')
-
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 nnoremap H ^
 nnoremap L $
@@ -24,7 +20,7 @@ nnoremap <leader>j J
 nnoremap <leader>k kJ
 
 " Edit MYVIMRC
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :tab split $MYVIMRC<cr>
 " Source it
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
