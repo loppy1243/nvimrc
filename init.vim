@@ -6,6 +6,7 @@ syntax on
 filetype on
 filetype indent off
 hi ColorColumn ctermbg=Red guibg=DarkRed
+colorscheme vimrc
 
 
 if !exists('s:executed')
