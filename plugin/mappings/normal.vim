@@ -107,5 +107,6 @@ nnoremap <leader>d} ma[{mb]}x`bx`a
 nnoremap <leader>d] mava[<esc>x`<x`a
 nnoremap <leader>d> mava<<esc>x`<x`a
 
+"" Show syntax items under the cursor.
 nnoremap <leader>ss :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<cr>
 nnoremap <leader>sS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
