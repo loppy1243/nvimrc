@@ -1,3 +1,17 @@
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   plugin/mappings/normal.vim
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.VimballRecord
+	.netrwhist
+
+no changes added to commit (use "git add" and/or "git commit -a")
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"" Normal Mode mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,8 +35,8 @@ nnoremap <leader>k kJ
 
 " Edit MYVIMRC
 nnoremap <leader>ev :tab split $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
-nnoremap <leader>Ev :enew $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
-nmap <leader>EV :enew $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
+nnoremap <leader>Ev :e $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
+nmap <leader>EV :e $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
 
 " Get rid of pesky highlighting
 nnoremap <leader>nh :nohlsearch<cr>
@@ -114,3 +128,7 @@ nnoremap <leader>d> mava<<esc>x`<x`a
 "" Show syntax items under the cursor.
 nnoremap <leader>ss :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<cr>
 nnoremap <leader>sS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
+
+"" Git mappings
+nnoremap <leader><leader><leader> :!git commit<cr>
+nnoremap <leader><leader>s :call vimrc#Git#Status()<cr>
