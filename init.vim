@@ -76,7 +76,6 @@ let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 if has('nvim')
-  let $NVIM_LISTEN_ADDRESS = tempname()
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
