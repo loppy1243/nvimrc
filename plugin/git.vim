@@ -13,8 +13,11 @@ endfunc
 augroup git
   au!
   au Filetype gitstatus call s:StatusSetup()
+  au Filetype gitcommit call s:CommitSetup()
 augroup END
 
-"" Git mappings
 nnoremap <leader><leader><leader> :call vimrc#Git#Commit()<cr>
 nnoremap <leader><leader>s :call vimrc#Git#Status()<cr>
+nnoremap <leader><leader>g :!git<space>
+nnoremap <leader><leader>a :!git add %<cr>
+nnoremap <leader><leader>A :!git add -u<cr>
