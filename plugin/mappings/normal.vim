@@ -21,6 +21,8 @@ nnoremap <leader>k kJ
 
 " Edit MYVIMRC
 nnoremap <leader>ev :tab split $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
+nnoremap <leader>Ev :enew $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
+nmap <leader>EV :enew $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
 
 " Get rid of pesky highlighting
 nnoremap <leader>nh :nohlsearch<cr>
