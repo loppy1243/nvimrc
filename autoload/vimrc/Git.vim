@@ -8,11 +8,16 @@ func! s:CommitJobCtrl(job_id, data, event) dict
   if a:event ==# 'stdout' || a:event ==# 'stderr'
     let s:lines = extend(s:lines, a:data)
   elseif a:event ==# 'exit'
-    echom '`git commit` returned with exit status' a:data . '. Output:'
-    for l:line in s:lines
-      echom l:line
-    endfor
-    exe len(s:lines)+3 . 'messages'
+    if !a:data
+      echom '`git commit` returned with exit status' a:data . '. Output:'
+      for l:line in s:lines
+        echom l:line
+      endfor
+    else
+      echoerr '`git commit` returned with exit status' a:data . '. Output:'
+      for l:line in s:lines
+        echoerr l:line
+      endfor
   else
     echoerr 'Unexpected event received by job' a:job_id . ':' a:even
   endif
