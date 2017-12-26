@@ -16,9 +16,20 @@ endfunc
  
 "" Swaps the current window with the window placed in the h/j/k/l direction
 "" dir.
-func! vimrc#SwapWindowInDirection(dir)
+func! vimrc#SwapWindowInDirection(...)
+  if a:0 > 1
+    echoerr 'Expected at most 1 argument, received ' . a:0
+  elseif a:0 ==? 1
+    let l:dir = a:0
+  else
+    let l:dir = vimrc#InputCharTimeout()
+    if l:dir is 0
+      return
+    endif
+  endif
+
   let l:prev_win_num = winnr()
-  exe "normal! \<c-w>" . a:dir
+  exe "normal! \<c-w>" . l:dir
   exe 'normal! ' . l:prev_win_num . "\<c-w>x"
 endfunc
 
@@ -85,22 +96,35 @@ func! vimrc#MoveToPreviousBlock()
   let &hlsearch = l:tmp
 endfunc
 
-func! vimrc#InputChar()
-  let l:c = getchar()
+func! vimrc#InputChar(...)
+  let l:c = call('getchar', a:000)
 
-  return type(l:c) == type(0) ? nr2char(l:c) : l:c
+  if type(l:c) ==# v:t_number
+    return l:c == 0 ? 0 : nr2char(l:c)
+  else
+    return l:c
+  endif
+endfunc
+
+func! vimrc#InputCharTimeout()
+  let l:t = reltime()
+
+  while !getchar(1) && reltimefloat(reltime(l:t))*1.0e3 < &timeoutlen
+  endwhile
+
+  return vimrc#InputChar(0)
 endfunc
 
 "" Move everything past the cursor from its current position to the column of the specified mark
 func! vimrc#AlignToMark(mode_str)
-  let l:mark = InputChar()
+  let l:mark = vimrc#InputChar()
   let l:mark_col = col("'" . l:mark)
 
-  if a:mode_str == 'n'
+  if a:mode_str ==# 'n'
     exe 'normal! i' . repeat(' ', l:mark_col - col('.')) . "\<esc>l"
-  elseif a:mode_str == 'V'
+  elseif a:mode_str ==# 'V'
     return "\<esc>'<'>I" . repeat(' ', l:mark_col - 1) . "\<esc>"
-  elseif a:mode_str == ''
+  elseif a:mode_str ==# ''
     return "I" . repeat(' ', l:mark_col - col("'<")) . "\<esc>"
   else
     echom 'Invalid mode for AlignToMark!'
@@ -118,7 +142,7 @@ func! vimrc#MapExpand(str)
   exe 'nnoremap ' . a:str . ' ' . a:str
   let l:ret = maparg(a:str, 'n')
 
-  if l:prev_mapping == ''
+  if l:prev_mapping ==# ''
     exe 'nunmap ' . a:str
   else
     exe 'nnoremap ' . a:str . ' ' . l:prev_mapping
@@ -196,5 +220,28 @@ func! vimrc#FiletypeStatus()
     return '[' . &filetype . ']'
   else
     return '---'
+  endif
+endfunc
+
+func! vimrc#SplitWindowInDirection(...)
+  if a:0 > 1
+    echoerr 'Expected at most 1 argument, received ' . a:0
+  elseif a:0 ==? 1
+    let l:c = a:0
+  else
+    let l:c = vimrc#InputCharTimeout()
+    if l:c is 0
+      return
+    endif
+  endif
+
+  if l:c ==? 'h'
+    leftabove vnew
+  elseif l:c ==? 'l'
+    rightbelow vnew
+  elseif l:c ==? 'j'
+    belowright new
+  elseif l:c ==? 'k'
+    aboveleft new
   endif
 endfunc

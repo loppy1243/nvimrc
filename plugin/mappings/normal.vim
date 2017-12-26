@@ -43,11 +43,8 @@ nnoremap <leader>mj dd$p
 " Up
 nnoremap <leader>mk :exe 'normal! dd' . (line('.') - 1) . 'G0P'<cr>
 
-"" Split a window to the left, right, up, and down, respectively
-nnoremap <leader>sh :leftabove vnew<cr>
-nnoremap <leader>sl :rightbelow vnew<cr>
-nnoremap <leader>sj :belowright new<cr>
-nnoremap <leader>sk :aboveleft new<cr>
+"" Split a window to the left, right, up, and down
+nnoremap <leader>s :call vimrc#SplitWindowInDirection()<cr>
 
 "" Very magic in searches
 nnoremap / /\v
@@ -61,10 +58,7 @@ nnoremap <leader>W :match<cr>
 nnoremap <leader>dw :%s/\v\s+$//<cr>
 
 "" Swap windows in the h,j,k,l directions
-nnoremap <c-w>sh :call vimrc#SwapWindowInDirection('h')<cr>
-nnoremap <c-w>sj :call vimrc#SwapWindowInDirection('j')<cr>
-nnoremap <c-w>sk :call vimrc#SwapWindowInDirection('k')<cr>
-nnoremap <c-w>sl :call vimrc#SwapWindowInDirection('l')<cr>
+nnoremap <c-w>s :call vimrc#SwapWindowInDirection()<cr>
 
 " Quick macro access; uses macro 'q'.
 nnoremap > @q
@@ -87,12 +81,22 @@ nnoremap MM 'm
 " Column align to column of specified mark from current position
 nnoremap <leader>a :call vimrc#AlignToMark('n')<cr>
 
-"" Conque mappings
-"" Generate windows
-nnoremap <leader>Sh :lefabove vnew<cr>:terminal<cr>
+"" Open terminals
+" FIXME: make work with SplitWindowInDirection
+nnoremap <leader>Sh :leftabove vnew<cr>:terminal<cr>
 nnoremap <leader>Sl :rightbelow vnew<cr>:terminal<cr>
 nnoremap <leader>Sj :belowright new<cr>:terminal<cr>
 nnoremap <leader>Sk :aboveleft new<cr>:terminal<cr>
+
+nnoremap <leader>SH :leftabove vnew<cr>:terminal<cr>
+nnoremap <leader>SL :rightbelow vnew<cr>:terminal<cr>
+nnoremap <leader>SJ :belowright new<cr>:terminal<cr>
+nnoremap <leader>SK :aboveleft new<cr>:terminal<cr>
+
+nnoremap <localleader>sh :leftabove vnew<cr>:call termopen(g:term_cmd)<cr>
+nnoremap <localleader>sl :rightbelow vnew<cr>:call termopen(g:term_cmd)<cr>
+nnoremap <localleader>sj :belowright new<cr>:call termopen(g:term_cmd)<cr>
+nnoremap <localleader>sk :aboveleft new<cr>:call termopen(g:term_cmd)<cr>
 
 "" Delete the surrounding brackets.
 nnoremap <leader>d( ma[(mb])x`bx`a
