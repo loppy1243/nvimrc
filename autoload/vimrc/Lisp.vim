@@ -1,4 +1,4 @@
-func! Lisp#NextOpeningParen()
+func! vimrc#Lisp#NextOpeningParen()
   let l:hlstate = &hlsearch
   set nohlsearch
   exe 'normal!' "/(\<cr>"
@@ -6,7 +6,7 @@ func! Lisp#NextOpeningParen()
   let &hlsearch = l:hlstate
 endfunc
 
-func! Lisp#PrevOpeningParen()
+func! vimrc#Lisp#PrevOpeningParen()
   let l:hlstate = &hlsearch
   set nohlsearch
   exe 'normal!' "?(\<cr>"
