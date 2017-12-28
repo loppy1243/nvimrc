@@ -10,7 +10,7 @@ func! s:CommitJobCtrl(job_id, data, event) dict
   elseif a:event ==# 'exit'
     let l:output = '`git commit` returned with exit status ' . a:data . '. Output:'
     for l:line in s:lines
-      let l:output .= '\n' . l:line
+      let l:output .= "\<cr>" . l:line
     endfor
     if !a:data
       echom l:output
