@@ -8,9 +8,9 @@ func! s:CommitJobCtrl(job_id, data, event) dict
   if a:event ==# 'stdout' || a:event ==# 'stderr'
     let s:lines = extend(s:lines, a:data)
   elseif a:event ==# 'exit'
-    l:output = '`git commit` returned with exit status' a:data . '. Output:'
+    let l:output = '`git commit` returned with exit status ' . a:data . '. Output:'
     for l:line in s:lines
-      l:output .= '\n' . l:line
+      let l:output .= '\n' . l:line
     endfor
     if !a:data
       echom l:output
