@@ -7,7 +7,7 @@ func! vimrc#DashesForFold(end_str)
     
     let l:tmp = &l:textwidth
     setlocal textwidth=0
-    exe 'normal! a' . repeat('-', l:num_dashes) . ' ' . a:end_str
+    exe 'normal! a'.repeat('-', l:num_dashes).' '.a:end_str
     let &l:textwidth = l:tmp
   else
     " TODO, if ever
@@ -18,7 +18,7 @@ endfunc
 "" dir.
 func! vimrc#SwapWindowInDirection(...)
   if a:0 > 1
-    echoerr 'Expected at most 1 argument, received ' . a:0
+    echoerr 'Expected at most 1 argument, received '.a:0
   elseif a:0 ==? 1
     let l:dir = a:0
   else
@@ -29,8 +29,8 @@ func! vimrc#SwapWindowInDirection(...)
   endif
 
   let l:prev_win_num = winnr()
-  exe "normal! \<c-w>" . l:dir
-  exe 'normal! ' . l:prev_win_num . "\<c-w>x"
+  exe "normal! \<c-w>".l:dir
+  exe 'normal! '.l:prev_win_num."\<c-w>x"
 endfunc
 
 "" Move the cursor to the next non-whitespace character on the line
@@ -118,14 +118,14 @@ endfunc
 "" Move everything past the cursor from its current position to the column of the specified mark
 func! vimrc#AlignToMark(mode_str)
   let l:mark = vimrc#InputChar()
-  let l:mark_col = col("'" . l:mark)
+  let l:mark_col = col("'".l:mark)
 
   if a:mode_str ==# 'n'
-    exe 'normal! i' . repeat(' ', l:mark_col - col('.')) . "\<esc>l"
+    exe 'normal! i'.repeat(' ', l:mark_col - col('.'))."\<esc>l"
   elseif a:mode_str ==# 'V'
-    return "\<esc>'<'>I" . repeat(' ', l:mark_col - 1) . "\<esc>"
+    return "\<esc>'<'>I".repeat(' ', l:mark_col - 1)."\<esc>"
   elseif a:mode_str ==# ''
-    return "I" . repeat(' ', l:mark_col - col("'<")) . "\<esc>"
+    return "I".repeat(' ', l:mark_col - col("'<"))."\<esc>"
   else
     echom 'Invalid mode for AlignToMark!'
   endif
@@ -139,32 +139,32 @@ let s:tmplet_cache = {}
 "" FIXME, DOES NOT WORK PROPERLY
 func! vimrc#MapExpand(str)
   let l:prev_mapping = maparg(a:str, 'n')
-  exe 'nnoremap ' . a:str . ' ' . a:str
+  exe 'nnoremap '.a:str.' '.a:str
   let l:ret = maparg(a:str, 'n')
 
   if l:prev_mapping ==# ''
-    exe 'nunmap ' . a:str
+    exe 'nunmap '.a:str
   else
-    exe 'nnoremap ' . a:str . ' ' . l:prev_mapping
+    exe 'nnoremap '.a:str.' '.l:prev_mapping
   endif
 
   return l:ret
 endfunc
 
 func! vimrc#SingleQuote(str)
-  return "'" . substitute(a:str, "'", "''", 'g') . "'"
+  return "'".substitute(a:str, "'", "''", 'g')."'"
 endfunc
 
 "" Temporary let. Only works for global, script, and option variables.
 func! vimrc#TmpLet(var, val)
-  exe "let s:tmplet_cache['" . a:var . "'] = " . a:var
-  exe 'let ' . a:var . ' = a:val'
+  exe "let s:tmplet_cache['".a:var."'] = ".a:var
+  exe 'let '.a:var.' = a:val'
 endfunc
 
 "" Restore Temporary Let
 func! vimrc#RestoreTmpLet(var)
-  exe 'let ' . a:var . " = s:tmplet_cache['" . a:var . "']"
-  exe "unlet s:tmplet_cache['" . a:var . "']"
+  exe 'let '.a:var." = s:tmplet_cache['".a:var."']"
+  exe "unlet s:tmplet_cache['".a:var."']"
 endfunc
 
 
@@ -217,7 +217,7 @@ endfunc
 "" '---' otherwise.
 func! vimrc#FiletypeStatus()
   if &filetype !=# ''
-    return '[' . &filetype . ']'
+    return '['.&filetype.']'
   else
     return '---'
   endif
@@ -225,9 +225,9 @@ endfunc
 
 func! vimrc#SplitWindowInDirection(...)
   if a:0 > 1
-    echoerr 'Expected at most 1 argument, received ' . a:0
+    echoerr 'Expected at most 1 argument, received '.a:0
     return 0
-  elseif a:0 ==? 1
+  elseif a:0 ==# 1
     let l:c = a:0
   else
     let l:c = vimrc#InputCharTimeout()
@@ -247,4 +247,39 @@ func! vimrc#SplitWindowInDirection(...)
   endif
 
   return 1
+endfunc
+
+func! vimrc#OpenMemo(...)
+  if a:0 > 1
+    echoerr 'Expected at most 1 argument, received '.a:0
+  elseif a:0 ==# 1
+    let l:name = a:1
+  else
+    let l:name = 'default'
+  endif
+
+  let l:name = 'memo://'.l:name
+
+  if !bufexists(l:name)
+    exe 'badd' l:name
+  endif
+
+  " If open in the current tab, go to that; if open but not in current tab, go to the first in
+  " the win_findbuf list.
+  if bufloaded(l:name)
+    let l:tabwins = map(win_findbuf(bufnr(l:name)), 'win_id2tabwin(v:val)')
+
+    for l:tabwin in l:tabwins
+      if l:tabwin[0] == tabpagenr()
+        exe l:tabwin[1].'wincmd w'
+        return 1
+      endif
+    endfor
+
+    exe l:tabwins[0][0].'tabnext'
+    exe l:tabwins[0][1].'wincmd w'
+  " If not open, open it in a new tab.
+  else
+    exe 'tab split' l:name
+  endif
 endfunc
