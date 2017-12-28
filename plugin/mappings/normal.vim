@@ -84,21 +84,19 @@ nnoremap MM 'm
 nnoremap <leader>a :call vimrc#AlignToMark('n')<cr>
 
 "" Open terminals
-" FIXME: make work with SplitWindowInDirection
-nnoremap <leader>Sh :leftabove vnew<cr>:terminal<cr>
-nnoremap <leader>Sl :rightbelow vnew<cr>:terminal<cr>
-nnoremap <leader>Sj :belowright new<cr>:terminal<cr>
-nnoremap <leader>Sk :aboveleft new<cr>:terminal<cr>
+nnoremap <leader>S :call <SID>SplitTerm()<cr>
+func! <SID>SplitTerm()
+  if vimrc#SplitWindowInDirection()
+    terminal
+  endif
+endfunc
 
-nnoremap <leader>SH :leftabove vnew<cr>:terminal<cr>
-nnoremap <leader>SL :rightbelow vnew<cr>:terminal<cr>
-nnoremap <leader>SJ :belowright new<cr>:terminal<cr>
-nnoremap <leader>SK :aboveleft new<cr>:terminal<cr>
-
-nnoremap <localleader>sh :leftabove vnew<cr>:call termopen(g:term_cmd)<cr>
-nnoremap <localleader>sl :rightbelow vnew<cr>:call termopen(g:term_cmd)<cr>
-nnoremap <localleader>sj :belowright new<cr>:call termopen(g:term_cmd)<cr>
-nnoremap <localleader>sk :aboveleft new<cr>:call termopen(g:term_cmd)<cr>
+nnoremap <localleader>s :call <SID>SplitTermopen(g:term_cmd)<cr>
+func! <SID>SplitTermopen(cmd)
+  if vimrc#SplitWindowInDirection()
+    call termopen(cmd)
+  endif
+endfunc
 
 "" Delete the surrounding brackets.
 nnoremap <leader>d( ma[(mb])x`bx`a

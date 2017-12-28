@@ -226,12 +226,13 @@ endfunc
 func! vimrc#SplitWindowInDirection(...)
   if a:0 > 1
     echoerr 'Expected at most 1 argument, received ' . a:0
+    return 0
   elseif a:0 ==? 1
     let l:c = a:0
   else
     let l:c = vimrc#InputCharTimeout()
     if l:c is 0
-      return
+      return 0
     endif
   endif
 
@@ -244,4 +245,6 @@ func! vimrc#SplitWindowInDirection(...)
   elseif l:c ==? 'k'
     aboveleft new
   endif
+
+  return 1
 endfunc
