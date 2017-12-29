@@ -1,4 +1,5 @@
 func! s:ManSetup()
+  setlocal buftype=nofile
   setlocal nonumber
   setlocal colorcolumn=0
 endfunc
