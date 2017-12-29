@@ -117,3 +117,5 @@ nnoremap <leader>m :call vimrc#OpenMemo()<cr>
 
 " Source current file
 nnoremap <leader>ss :so %<cr>
+
+nnoremap <localleader>[[ {jV}ky:call jobsend(g:placeholder, getreg('"'))<cr>
