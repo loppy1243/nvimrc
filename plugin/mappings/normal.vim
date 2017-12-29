@@ -123,3 +123,6 @@ nnoremap <leader>m :call vimrc#OpenMemo()<cr>
 nnoremap <leader>ss :so %<cr>
 
 nnoremap <localleader>[[ {jV}ky:call jobsend(g:placeholder, getreg('"'))<cr>
+
+nnoremap [[ call g:GoToPrevFunc()<cr>
+nnoremap ]] call g:GoToNextFunc()<cr>

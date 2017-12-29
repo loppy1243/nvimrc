@@ -1,8 +1,8 @@
 func! s:LispSetup()
   let b:comment_seq = ';'
   let b:comment_esc = ''
-  nnoremap <buffer> <c-[> :call vimrc#Lisp#PrevOpeningParen()<cr>
-  nnoremap <buffer> <c-]> :call vimrc#Lisp#NextOpeningParen()<cr>
+"  nnoremap <buffer> [[ :call vimrc#Lisp#PrevOpeningParen()<cr>
+"  nnoremap <buffer> ]] :call vimrc#Lisp#NextOpeningParen()<cr>
 endfunc
 
 func! s:RacketSetup()

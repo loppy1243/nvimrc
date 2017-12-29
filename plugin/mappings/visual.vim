@@ -20,7 +20,7 @@ vnoremap <c-k> omb<esc>`<:call vimrc#MoveToPreviousBlock()<cr>
 
 " Indent
 vnoremap <tab> >
-" Dedent.
+" Dedent
 vnoremap <space><tab> <
 
 "" Commenting
