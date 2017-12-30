@@ -28,7 +28,7 @@ func! s:CommitJobCtrl(job_id, data, event) dict
   elseif a:event ==# 'exit'
     let s:lines = extend(['`git commit` returned with exit status '.a:data.'. Output:'], s:lines)
     new
-    setlocal filetype=gitstatus
+    setfiletype gitstatus
     call append(0, s:lines)
   else
     echoerr 'Unexpected event received by job' a:job_id.':' a:event

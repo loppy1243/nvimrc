@@ -1,3 +1,3 @@
-au BufNewFile,BufReadPost *.jl setlocal filetype=julia
-au BufNewFile,BufReadPost *.asd setlocal filetype=lisp
-au BufNewFile,BufReadPost *.asm setlocal filetype=nasm
+au BufNewFile,BufReadPost *.jl  setfiletype julia
+au BufNewFile,BufReadPost *.asd setfiletype lisp
+au BufNewFile,BufReadPost *.asm setfiletype nasm

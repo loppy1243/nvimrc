@@ -1,3 +1,6 @@
+"func! s:EvalBlock
+"endfunc
+
 func! s:JuliaSetup()
   setlocal tabstop=4
   let b:comment_seq = '#'

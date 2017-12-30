@@ -126,3 +126,21 @@ nnoremap <localleader>ss ^v$y:call jobsend(g:placeholder, getreg('"'))<cr>
 nnoremap <localleader>s] ^ma:normal %<cr>mb`a<c-v>`b$y
                         \:call setreg('"', getreg('"', 1, 1), 'V')<cr>
                         \:call jobsend(g:placeholder, extend(getreg('"', 1, 1), ['']))<cr>
+
+func! s:EvalLine(jobid)
+  normal! ^v$y
+  call jobsend(jobid, getref('"'))<cr>
+endfunc
+
+func! s:EvalBlock(jobid)
+  normal! ^ma
+  normal %
+  normal! mb`a<c-v>`b$y
+  call setreg('"', getreg('"', 1, 1), 'V')
+  call jobsend(jobid, extend(getreg('"', 1, 1), ['']))
+endfunc
+
+let g:EvalLine = funcref('s:EvalLine')
+let g:EvalBlock = funcref('s:EvalBlock')
+nnoremap <localleader>ss :call g:EvalLine(g:placeholder)<cr>
+nnoremap <localleader>s] :call g:EvalBlock(g:placeholder)<cr>

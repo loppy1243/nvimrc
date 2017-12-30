@@ -2,7 +2,7 @@ func! s:MakeMemo()
   setlocal buftype=nofile
   setlocal bufhidden=hide
   setlocal noswapfile
-  setlocal filetype=memo
+  setfiletype memo
 endfunc
 
 augroup memo
