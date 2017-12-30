@@ -122,7 +122,7 @@ nnoremap <leader>m :call vimrc#OpenMemo()<cr>
 " Source current file
 nnoremap <leader>ss :so %<cr>
 
-nnoremap <localleader>[[ {jV}ky:call jobsend(g:placeholder, getreg('"'))<cr>
-
-nnoremap [[ call g:GoToPrevFunc()<cr>
-nnoremap ]] call g:GoToNextFunc()<cr>
+nnoremap <localleader>ss ^v$y:call jobsend(g:placeholder, getreg('"'))<cr>
+nnoremap <localleader>s] ^ma:normal %<cr>mb`a<c-v>`b$y
+                        \:call setreg('"', getreg('"', 1, 1), 'V')<cr>
+                        \:call jobsend(g:placeholder, extend(getreg('"', 1, 1), ['']))<cr>

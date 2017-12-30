@@ -5,12 +5,6 @@ func! s:JuliaSetup()
   let b:term_cmd = 'julia'
 endfunc
 
-func! s:GoToPrevFunc()
-end
-
-func! s:GoToNextFunc()
-end
-
 augroup julia
   au!
   au Filetype julia call s:JuliaSetup()
