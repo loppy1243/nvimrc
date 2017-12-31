@@ -8,7 +8,9 @@ hi ColorColumn ctermbg=Red guibg=DarkRed
 colorscheme vimrc
 
 
-if !exists('s:executed')
+if exists('s:executed')
+  finish
+endif
 let s:executed = 1
 
 
@@ -76,7 +78,4 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
-endif
-
-
 endif
