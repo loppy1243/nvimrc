@@ -1,3 +1,10 @@
+func! vimrc#Lisp#Setup()
+  let b:comment_seq = ';'
+  let b:comment_esc = ''
+  nnoremap <buffer> [[ :call vimrc#Lisp#PrevOpeningParen()<cr>
+  nnoremap <buffer> ][ :call vimrc#Lisp#NextOpeningParen()<cr>
+endfunc
+
 func! vimrc#Lisp#NextOpeningParen()
   let l:hlstate = &hlsearch
   set nohlsearch
