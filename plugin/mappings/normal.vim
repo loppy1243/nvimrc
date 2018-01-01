@@ -22,7 +22,7 @@ nnoremap <leader>k kJ
 " Edit MYVIMRC
 nnoremap <leader>ev :tab split $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
 nnoremap <leader>Ev :e $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
-nmap <leader>EV :e $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
+nnoremap <leader>EV :e $MYVIMRC<cr>:exe ':lcd' fnamemodify($MYVIMRC, ':h')<cr>
 
 " Get rid of pesky highlighting
 nnoremap <leader>nh :nohlsearch<cr>
@@ -92,6 +92,7 @@ nnoremap <leader>S :call <SID>SplitTerm()<cr>
 func! <SID>SplitTerm()
   if vimrc#SplitWindowInDirection()
     terminal
+    if !getbufvar('#', 'repl_bufnr', 0)
   endif
 endfunc
 
@@ -122,14 +123,9 @@ nnoremap <leader>m :call vimrc#OpenMemo()<cr>
 " Source current file
 nnoremap <leader>ss :so %<cr>
 
-nnoremap <localleader>ss ^v$y:call jobsend(g:placeholder, getreg('"'))<cr>
-nnoremap <localleader>s] ^ma:normal %<cr>mb`a<c-v>`b$y
-                        \:call setreg('"', getreg('"', 1, 1), 'V')<cr>
-                        \:call jobsend(g:placeholder, extend(getreg('"', 1, 1), ['']))<cr>
-
 func! s:EvalLine(jobid)
   normal! ^v$y
-  call jobsend(jobid, getref('"'))<cr>
+  call jobsend(jobid, getref('"'))
 endfunc
 
 func! s:EvalBlock(jobid)
@@ -142,5 +138,7 @@ endfunc
 
 let g:EvalLine = funcref('s:EvalLine')
 let g:EvalBlock = funcref('s:EvalBlock')
-nnoremap <localleader>ss :call g:EvalLine(g:placeholder)<cr>
-nnoremap <localleader>s] :call g:EvalBlock(g:placeholder)<cr>
+nnoremap <localleader>ss :call g:EvalLine(b:repl_bufnr)<cr>
+nnoremap <localleader>s] :call g:EvalBlock(b:repl_bufnr)<cr>
+
+nnoremap <c-`> `
