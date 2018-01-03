@@ -92,14 +92,17 @@ nnoremap <leader>S :call <SID>SplitTerm()<cr>
 func! <SID>SplitTerm()
   if vimrc#SplitWindowInDirection()
     terminal
-    if !getbufvar('#', 'repl_bufnr', 0)
   endif
 endfunc
 
-nnoremap <localleader>s :call <SID>SplitTermopen(g:term_cmd)<cr>
+nnoremap <localleader>s :call <SID>SplitTermopen(b:term_cmd)<cr>
 func! <SID>SplitTermopen(cmd)
   if vimrc#SplitWindowInDirection()
-    call termopen(cmd)
+    call termopen(a:cmd)
+    if !getbufvar('#', 'repl_bufnr', 0)
+      call setbufvar('#', 'repl_bufnr', bufnr('%'))
+      exe 'au BufUnload <buffer> call setbufvar('.bufnr('#').', "repl_bufnr", 0)'
+    endif
   endif
 endfunc
 
@@ -108,7 +111,6 @@ nnoremap <leader>d( ma[(mb])x`bx`a
 nnoremap <leader>d{ ma[{mb]}x`bx`a
 nnoremap <leader>d[ mava[<esc>x`<x`a
 nnoremap <leader>d< mava<<esc>x`<x`a
-
 nnoremap <leader>d) ma[(mb])x`bx`a
 nnoremap <leader>d} ma[{mb]}x`bx`a
 nnoremap <leader>d] mava[<esc>x`<x`a
@@ -123,22 +125,35 @@ nnoremap <leader>m :call vimrc#OpenMemo()<cr>
 " Source current file
 nnoremap <leader>ss :so %<cr>
 
-func! s:EvalLine(jobid)
-  normal! ^v$y
-  call jobsend(jobid, getref('"'))
-endfunc
+func! <SID>EvalMotion(mode, ...)
+  if a:0 > 1
+    echoerr 'Expected at most 1 argument, found' a:0
+  elseif a:0 == 1
+    exe 'normal! `<'.a:1.'`>y'
+  else
+    if a:mode ==# 'line'
+      let l:v = 'V'
+    elseif a:mode ==# 'char'
+      let l:v = 'v'
+    elseif a:mode ==# 'block'
+      let l:v = ''
+    else
+      echoerr 'Unexpected mode'
+    endif
 
-func! s:EvalBlock(jobid)
-  normal! ^ma
-  normal %
-  normal! mb`a<c-v>`b$y
-  call setreg('"', getreg('"', 1, 1), 'V')
-  call jobsend(jobid, extend(getreg('"', 1, 1), ['']))
-endfunc
+    exe 'normal! `['.l:v.'`]y'
+  endif
 
-let g:EvalLine = funcref('s:EvalLine')
-let g:EvalBlock = funcref('s:EvalBlock')
-nnoremap <localleader>ss :call g:EvalLine(b:repl_bufnr)<cr>
-nnoremap <localleader>s] :call g:EvalBlock(b:repl_bufnr)<cr>
+  call b:repl_eval_f(s:eval_motion_bufnr ? s:eval_motion_bufnr : b:repl_bufnr, getreg('"', 1, 1))
+endfunc
+func! <SID>SetEvalMotionBufnr()
+  let s:eval_motion_bufnr = v:count
+endfunc
+nnoremap <localleader>rs :call <SID>SetEvalMotionBufnr()<cr>
+                        \:set operatorfunc=<SID>EvalMotion<cr>g@
+nnoremap <localleader>rss :call <SID>SetEvalMotionBufnr()<cr>
+                         \^m[$m]:call <SID>EvalMotion('line')<cr>
+vnoremap <localleader>rs :<c-u>call <SID>SetEvalMotionBufnr()<cr>
+                        \:call <SID>EvalMotion('visual', visualmode())<cr>
 
 nnoremap <c-`> `
