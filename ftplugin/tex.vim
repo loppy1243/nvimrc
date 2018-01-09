@@ -49,7 +49,7 @@ func! <SID>ViewLatex()
 
   exe 'silent make' l:file
 
-  if g:latex_viewer_jobid
+  if exists('g:latex_viewer_jobid') && g:latex_viewer_jobid
     exe 'silent !kill -SIGHUP' jobpid(g:latex_viewer_jobid)
   else
     let g:latex_viewer_jobid =
