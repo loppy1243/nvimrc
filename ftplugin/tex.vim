@@ -10,10 +10,14 @@ let b:comment_seq = '%'
 let b:comment_esc = ''
 
  " Create begin/end block
-nnoremap <buffer> <localleader><localleader> :vimrc#Latex#MakeBlockNormal<space>
-vnoremap <buffer> <localleader><localleader> :<c-u>vimrc#Latex#MakeBlockVisual<space>
-inoremap <buffer> <C-\> <esc>:vimrc#Latex#MakeBlockNormal<space>
-nnoremap <buffer> <localleader>a :vimrc#Latex#MakeBlockInline<space>
+command! -nargs=1 LatexMakeBlockNormal call vimrc#Latex#MakeBlock('n', <f-args>)
+command! -nargs=1 LatexMakeBlockVisual call vimrc#Latex#MakeBlock(visualmode(), <f-args>)
+command! -nargs=1 LatexMakeBlockInline call vimrc#Latex#MakeBlock('l', <f-args>)
+
+nnoremap <buffer> <localleader><localleader> :LatexMakeBlockNormal<space>
+vnoremap <buffer> <localleader><localleader> :<c-u>LatexMakeBlockVisual<space>
+inoremap <buffer> <C-\> <esc>:LatexMakeBlockNormal<space>
+nnoremap <buffer> <localleader>a :LatexMakeBlockInline<space>
 
 nnoremap <buffer> <localleader>ll :call <SID>ViewLatex()<cr>
 command! -nargs=? LatexSetMain call <SID>LatexSetMain(<f-args>)

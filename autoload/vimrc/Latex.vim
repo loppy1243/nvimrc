@@ -9,7 +9,3 @@ func! vimrc#Latex#MakeBlock(m, arg)
     exe "normal! '<0" . a:m . "`>$c\\begin{" . a:arg . "}\<esc>gpO" . '\end{' . a:arg . "}\<esc>"
   endif
 endfunc
-
-command! -nargs=1 vimrc#Latex#MakeBlockNormal call vimrc#Latex#MakeBlock('n', <f-args>)
-command! -nargs=1 vimrc#Latex#MakeBlockVisual call vimrc#Latex#MakeBlock(visualmode(), <f-args>)
-command! -nargs=1 vimrc#Latex#MakeBlockInline call vimrc#Latex#MakeBlock('l', <f-args>)
