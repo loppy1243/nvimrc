@@ -2,6 +2,10 @@
 """"" Normal Mode mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Helpful for mobile
+nnoremap <c-j> k
+vnoremap <c-j> k
+
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 nnoremap H ^
 nnoremap L $
