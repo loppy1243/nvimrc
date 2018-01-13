@@ -3,6 +3,7 @@ let b:comment_seq = '#'
 let b:comment_esc = ''
 let b:term_cmd = 'julia'
 
+let s:scratch_files = []
 func! s:ReplEval(buf, text)
   if len(a:text) == 1
     let l:cmd = extend(a:text, [''])
@@ -10,12 +11,6 @@ func! s:ReplEval(buf, text)
     if getbufvar(a:buf, 'repl_scratch_file', 0) is 0
       call setbufvar(a:buf, 'repl_scratch_file', tempname())
 
-      augroup _julia_repl_scratch_file
-        au!
-        au BufUnload <buffer=a:buf> call delete(b:repl_scratch_file)
-                                \ | unlet b:repl_scratch_file
-                                \ | au! _julia_repl_scratch_file
-      augroup END
     endif
 
     let l:f = getbufvar(a:buf, 'repl_scratch_file')
@@ -34,3 +29,7 @@ func! s:ReplEval(buf, text)
 endfunc
 
 let b:repl_eval_f = funcref('s:ReplEval')
+
+augroup julia
+  au VimLeave <buffer=a:buf> for l:f in s:scratch_files | call delete(s:scratch_files) | endfor
+augroup END

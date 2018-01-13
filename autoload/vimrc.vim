@@ -7,7 +7,7 @@ func! vimrc#DashesForFold(end_str)
     
     let l:tmp = &l:textwidth
     setlocal textwidth=0
-    exe 'normal! a'.repeat('-', l:num_dashes).' '.a:end_str
+    exe 'normal! a'.repeat('-', l:num_dashes) a:end_str
     let &l:textwidth = l:tmp
   else
     " TODO, if ever
@@ -30,7 +30,7 @@ func! vimrc#SwapWindowInDirection(...)
 
   let l:prev_win_num = winnr()
   exe "normal! \<c-w>".l:dir
-  exe 'normal! '.l:prev_win_num."\<c-w>x"
+  exe 'normal!' l:prev_win_num."\<c-w>x"
 endfunc
 
 "" Move the cursor to the next non-whitespace character on the line
@@ -139,13 +139,13 @@ let s:tmplet_cache = {}
 "" FIXME, DOES NOT WORK PROPERLY
 func! vimrc#MapExpand(str)
   let l:prev_mapping = maparg(a:str, 'n')
-  exe 'nnoremap '.a:str.' '.a:str
+  exe 'nnoremap' a:str a:str
   let l:ret = maparg(a:str, 'n')
 
   if l:prev_mapping ==# ''
-    exe 'nunmap '.a:str
+    exe 'nunmap' a:str
   else
-    exe 'nnoremap '.a:str.' '.l:prev_mapping
+    exe 'nnoremap' a:str l:prev_mapping
   endif
 
   return l:ret
@@ -157,8 +157,8 @@ endfunc
 
 "" Temporary let. Only works for global, script, and option variables.
 func! vimrc#TmpLet(var, val)
-  exe "let s:tmplet_cache['".a:var."'] = ".a:var
-  exe 'let '.a:var.' = a:val'
+  exe "let s:tmplet_cache['".a:var."'] =" a:var
+  exe 'let' a:var '= a:val'
 endfunc
 
 "" Restore Temporary Let
