@@ -3,7 +3,7 @@
 nmap <Plug>DisableIMAP_JumpForward <Plug>IMAP_JumpForward
 
 syntax on
-filetype plugin indent on
+filetype plugin on
 hi ColorColumn ctermbg=Red guibg=DarkRed
 colorscheme vimrc
 
