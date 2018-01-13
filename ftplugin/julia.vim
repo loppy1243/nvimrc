@@ -31,5 +31,5 @@ endfunc
 let b:repl_eval_f = funcref('s:ReplEval')
 
 augroup julia
-  au VimLeave <buffer=a:buf> for l:f in s:scratch_files | call delete(s:scratch_files) | endfor
+  au VimLeave for l:f in s:scratch_files | call delete(s:scratch_files) | endfor
 augroup END
