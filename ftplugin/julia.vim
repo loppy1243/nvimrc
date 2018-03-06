@@ -10,7 +10,6 @@ func! s:ReplEval(buf, text)
   else
     if getbufvar(a:buf, 'repl_scratch_file', 0) is 0
       call setbufvar(a:buf, 'repl_scratch_file', tempname())
-
     endif
 
     let l:f = getbufvar(a:buf, 'repl_scratch_file')
