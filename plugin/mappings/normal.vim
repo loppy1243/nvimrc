@@ -9,8 +9,9 @@ nnoremap L $
 "nnoremap K <c-b>
 
 "" Move by units delimited by whitespace
-nnoremap <c-h> :call vimrc#MoveToPreviousChunk()<cr>
-nnoremap <c-l> :call vimrc#MoveToNextChunk()<cr>
+" Removed and replaced further down.
+"nnoremap <c-h> :call vimrc#MoveToPreviousChunk()<cr>
+"nnoremap <c-l> :call vimrc#MoveToNextChunk()<cr>
 nnoremap <c-j> :call vimrc#MoveToNextBlock()<cr>
 nnoremap <c-k> :call vimrc#MoveToPreviousBlock()<cr>
 
@@ -158,5 +159,19 @@ vnoremap <localleader>rs :<c-u>call <SID>SetEvalMotionBufnr()<cr>
 
 nnoremap <c-`> `
 
-"" Cached f/F/t/T
-"nnoremap f :call CachedF()<cr>
+" Cached f/F/t/T
+func! <SID>CachedF(command, cache)
+  if a:cache
+    let s:cached_char = vimrc#InputChar()
+  elseif !exists('s:cached_char')
+    let s:cached_char = "\<esc>"
+  endif
+
+  exe 'normal!' a:command.s:cached_char
+endfunc
+nnoremap f :call <SID>CachedF('f', 1)<cr>
+nnoremap F :call <SID>CachedF('F', 1)<cr>
+nnoremap t :call <SID>CachedF('t', 1)<cr>
+nnoremap T :call <SID>CachedF('T', 1)<cr>
+nnoremap <c-h> :call <SID>CachedF('F', 0)<cr>
+nnoremap <c-l> :call <SID>CachedF('f', 0)<cr>
