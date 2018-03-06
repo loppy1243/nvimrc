@@ -157,3 +157,6 @@ vnoremap <localleader>rs :<c-u>call <SID>SetEvalMotionBufnr()<cr>
                         \:call <SID>EvalMotion('visual', visualmode())<cr>
 
 nnoremap <c-`> `
+
+"" Cached f/F/t/T
+"nnoremap f :call CachedF()<cr>
