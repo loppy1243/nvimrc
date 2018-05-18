@@ -3,6 +3,9 @@ func! vimrc#Lisp#Setup()
   let b:comment_esc = ''
   nnoremap <buffer> [[ :call vimrc#Lisp#PrevOpeningParen()<cr>
   nnoremap <buffer> ][ :call vimrc#Lisp#NextOpeningParen()<cr>
+
+  let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+  RainbowParentheses
 endfunc
 
 func! vimrc#Lisp#NextOpeningParen()
