@@ -10,3 +10,6 @@
 [submodule "bundle/vim-slime"]
 	path = pack/git-submodules/start/vim-slime
 	url = https://github.com/jpalardy/vim-slime
+[submodule "pack/git-submodules/start/rainbow_parentheses"]
+	path = pack/git-submodules/start/rainbow_parentheses
+	url = https://github.com/junegunn/rainbow_parentheses.vim
