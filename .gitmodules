@@ -13,3 +13,6 @@
 [submodule "pack/git-submodules/start/rainbow_parentheses"]
 	path = pack/git-submodules/start/rainbow_parentheses
 	url = https://github.com/junegunn/rainbow_parentheses.vim
+[submodule "pack/git-submodules/start/vimpyter"]
+	path = pack/git-submodules/start/vimpyter
+	url = https://github.com/szymonmaszke/vimpyter
