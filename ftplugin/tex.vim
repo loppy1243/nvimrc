@@ -19,7 +19,6 @@ vnoremap <buffer> <localleader><localleader> :<c-u>LatexMakeBlockVisual<space>
 inoremap <buffer> <C-\> <esc>:LatexMakeBlockNormal<space>
 nnoremap <buffer> <localleader>a :LatexMakeBlockInline<space>
 
-nnoremap <buffer> <localleader>ll :call <SID>ViewLatex()<cr>
 command! -nargs=? LatexSetMain call <SID>LatexSetMain(<f-args>)
 nnoremap <localleader>L :LatexSetMain<cr>
 nnoremap <localleader>lk :call jobstop(g:latex_viewer_jobid)<cr>
@@ -38,7 +37,8 @@ func! s:ViewLatexHandler(jobid, data, event) dict
 endfunc
 let s:view_latex_handler = funcref('s:ViewLatexHandler')
 
-func! <SID>ViewLatex()
+let b:make_file_f = funcref('s:ViewLatex')
+func! s:ViewLatex()
   if exists('g:latex_main_file') && g:latex_main_file !=# ''
     let l:bufnr = bufnr(g:latex_main_file)
     let l:file = g:latex_main_file
