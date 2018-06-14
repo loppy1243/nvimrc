@@ -159,7 +159,7 @@ nnoremap <localleader><localleader><localleader> :call <SID>SetEvalMotionBufnr()
 vnoremap <localleader><localleader> :<c-u>call <SID>SetEvalMotionBufnr()<cr>
                                    \:call <SID>EvalMotion('visual', visualmode())<cr>
 
-nnoremap || :call b:run_file_f()<cr>
+nnoremap \|\| :call b:run_file_f()<cr>
 nnoremap <localleader>ll :call b:make_file_f()<cr>
 
 " Makes this available
