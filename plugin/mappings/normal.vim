@@ -150,12 +150,12 @@ endfunc
 func! <SID>SetEvalMotionBufnr()
   let s:eval_motion_bufnr = v:count
 endfunc
-nnoremap <localleader>rs :call <SID>SetEvalMotionBufnr()<cr>
-                        \:set operatorfunc=<SID>EvalMotion<cr>g@
-nnoremap <localleader>rss :call <SID>SetEvalMotionBufnr()<cr>
+nnoremap <localleader>\ :call <SID>SetEvalMotionBufnr()<cr>
+                       \:set operatorfunc=<SID>EvalMotion<cr>g@
+nnoremap <localleader>\\ :call <SID>SetEvalMotionBufnr()<cr>
                          \^m[$m]:call <SID>EvalMotion('line')<cr>
-vnoremap <localleader>rs :<c-u>call <SID>SetEvalMotionBufnr()<cr>
-                        \:call <SID>EvalMotion('visual', visualmode())<cr>
+vnoremap <localleader>\ :<c-u>call <SID>SetEvalMotionBufnr()<cr>
+                       \:call <SID>EvalMotion('visual', visualmode())<cr>
 
 nnoremap <c-`> `
 
