@@ -32,3 +32,14 @@ let b:repl_eval_f = funcref('s:ReplEval')
 augroup julia
   au VimLeave for l:f in s:scratch_files | call delete(s:scratch_files) | endfor
 augroup END
+
+let b:make_file_f = funcref('s:LoadFile')
+func! s:LoadFile()
+  call s:ReplEval(b:repl_bufnr, 'include("'.expand('%').'")')
+endfunc
+
+command! -nargs=1 JuliaSetRunExpr let b:julia_run_expr = <q-args>
+let b:run_file_f = funcref('s:ExecFile')
+func! s:ExecFile()
+  call s:ReplEval(b:repl_bufnr, b:julia_run_expr)
+endfunc

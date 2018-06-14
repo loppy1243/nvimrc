@@ -2,6 +2,8 @@
 """"" Normal Mode mappings.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"" Ergonomics based on assumption that <localleader> is \
+
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 nnoremap H ^
 nnoremap L $
@@ -150,13 +152,17 @@ endfunc
 func! <SID>SetEvalMotionBufnr()
   let s:eval_motion_bufnr = v:count
 endfunc
-nnoremap <localleader>\ :call <SID>SetEvalMotionBufnr()<cr>
-                       \:set operatorfunc=<SID>EvalMotion<cr>g@
-nnoremap <localleader>\\ :call <SID>SetEvalMotionBufnr()<cr>
-                         \^m[$m]:call <SID>EvalMotion('line')<cr>
-vnoremap <localleader>\ :<c-u>call <SID>SetEvalMotionBufnr()<cr>
-                       \:call <SID>EvalMotion('visual', visualmode())<cr>
+nnoremap <localleader><localleader> :call <SID>SetEvalMotionBufnr()<cr>
+                                   \:set operatorfunc=<SID>EvalMotion<cr>g@
+nnoremap <localleader><localleader><localleader> :call <SID>SetEvalMotionBufnr()<cr>
+                                                \^m[$m]:call <SID>EvalMotion('line')<cr>
+vnoremap <localleader><localleader> :<c-u>call <SID>SetEvalMotionBufnr()<cr>
+                                   \:call <SID>EvalMotion('visual', visualmode())<cr>
 
+nnoremap || :call b:run_file_f()<cr>
+nnoremap <localleader>ll :call b:make_file_f()<cr>
+
+" Makes this available
 nnoremap <c-`> `
 
 " Cached f/F/t/T
