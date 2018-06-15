@@ -105,6 +105,7 @@ func! <SID>SplitTermopen(cmd)
     if !getbufvar('#', 'repl_bufnr', 0)
       call setbufvar('#', 'repl_bufnr', bufnr('%'))
       " TODO: Maybe make a vimrc#Term#Setup() function.
+      " FIXME: Doesn't seem to work.
       setlocal nonumber
       exe 'au BufUnload <buffer> call setbufvar('.bufnr('#').', "repl_bufnr", 0)'
     endif
