@@ -283,3 +283,15 @@ func! vimrc#OpenMemo(...)
     exe 'tab split' l:name
   endif
 endfunc
+
+func! vimrc#ReplEval(buf, text)
+  let l:cmd = extend(a:text, [''])
+
+  let l:id = getbufvar(a:buf, 'terminal_job_id', -1)
+  if l:id == -1
+    echoerr 'no b:terminal_job_id associated with ['.a:buf.']' bufname(a:buf)
+    return
+  endif
+
+  call jobsend(l:id, l:cmd)
+endfunc
