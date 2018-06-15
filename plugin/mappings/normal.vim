@@ -104,6 +104,8 @@ func! <SID>SplitTermopen(cmd)
     call termopen(a:cmd)
     if !getbufvar('#', 'repl_bufnr', 0)
       call setbufvar('#', 'repl_bufnr', bufnr('%'))
+      " TODO: Maybe make a vimrc#Term#Setup() function.
+      setlocal nonumber
       exe 'au BufUnload <buffer> call setbufvar('.bufnr('#').', "repl_bufnr", 0)'
     endif
   endif
@@ -120,7 +122,7 @@ nnoremap <leader>d] mava[<esc>x`<x`a
 nnoremap <leader>d> mava<<esc>x`<x`a
 
 "" Show syntax items under the cursor.
-nnoremap <leader>ss :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<cr>
+"nnoremap <leader>ss :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<cr>
 nnoremap <leader>sS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
 
 nnoremap <leader>m :call vimrc#OpenMemo()<cr>
