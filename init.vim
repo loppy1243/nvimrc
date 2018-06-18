@@ -81,4 +81,5 @@ let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
+  let $GIT_EDITOR = $VISUAL
 endif
