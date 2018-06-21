@@ -65,6 +65,9 @@ if !exists('b:comment_seq')
   let b:comment_seq = ''
 endif
 
+"" REPL buffers
+let g:repl_bufnr = {}
+
 "" indentLine
 let g:indentLine_faster = 1
 
