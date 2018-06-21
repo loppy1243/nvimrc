@@ -8,7 +8,7 @@ endfunc
 
 command! -nargs=1 SetRunExpr let b:run_expr = <q-args>
 func! s:RunFile()
-  call b:repl_eval_f(b:repl_bufnr, [b:run_expr])
+  call b:repl_eval_f(g:repl_bufnr[&l:filetype], [b:run_expr])
 endfunc
 
 augroup repl

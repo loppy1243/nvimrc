@@ -100,14 +100,15 @@ endfunc
 
 nnoremap <localleader>s :call <SID>SplitTermopen(b:term_cmd)<cr>
 func! <SID>SplitTermopen(cmd)
+  let l:fty = &l:filetype
   if vimrc#SplitWindowInDirection()
     call termopen(a:cmd)
-    if !getbufvar('#', 'repl_bufnr', 0)
-      call setbufvar('#', 'repl_bufnr', bufnr('%'))
+    if !get(g:repl_bufnr, l:fty, 0)
+      let g:repl_bufnr[l:fty] = bufnr('%')
       " TODO: Maybe make a vimrc#Term#Setup() function.
       " FIXME: Doesn't seem to work.
       setlocal nonumber
-      exe 'au BufUnload <buffer> call setbufvar('.bufnr('#').', "repl_bufnr", 0)'
+      exe 'au BufUnload <buffer> unlet g:repl_bufnr["'.l:fty.'"]'
     endif
   endif
 endfunc
@@ -150,7 +151,8 @@ func! <SID>EvalMotion(mode, ...)
     exe 'normal! `['.l:v.'`]y'
   endif
 
-  call b:repl_eval_f(s:eval_motion_bufnr ? s:eval_motion_bufnr : b:repl_bufnr, getreg('"', 1, 1))
+  call b:repl_eval_f(s:eval_motion_bufnr ? s:eval_motion_bufnr : g:repl_bufnr[&l:filetype],
+                     getreg('"', 1, 1))
 endfunc
 func! <SID>SetEvalMotionBufnr()
   let s:eval_motion_bufnr = v:count
