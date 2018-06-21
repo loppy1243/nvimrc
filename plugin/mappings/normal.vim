@@ -184,3 +184,7 @@ nnoremap t :call <SID>CachedF('t', 1)<cr>
 nnoremap T :call <SID>CachedF('T', 1)<cr>
 nnoremap <c-h> :call <SID>CachedF('F', 0)<cr>
 nnoremap <c-l> :call <SID>CachedF('f', 0)<cr>
+
+" Convenient tab moving
+nnoremap <M-h> :tabN<cr>
+nnoremap <M-l> :tabn<cr>
