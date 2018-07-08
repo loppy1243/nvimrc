@@ -152,7 +152,7 @@ func! <SID>EvalMotion(mode, ...)
   endif
 
   call b:repl_eval_f(s:eval_motion_bufnr ? s:eval_motion_bufnr : g:repl_bufnr[&l:filetype],
-                     getreg('"', 1, 1))
+                    \getreg('"', 1, 1))
 endfunc
 func! <SID>SetEvalMotionBufnr()
   let s:eval_motion_bufnr = v:count
