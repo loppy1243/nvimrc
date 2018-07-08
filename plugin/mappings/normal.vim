@@ -190,3 +190,7 @@ nnoremap <c-l> :call <SID>CachedF('f', 0)<cr>
 " Convenient tab moving
 nnoremap <M-h> :tabN<cr>
 nnoremap <M-l> :tabn<cr>
+
+" Non-clobbering :only mapping
+nnoremap <c-w>o :tab split<cr>
+nmap <c-w><c-o> <c-w>o
