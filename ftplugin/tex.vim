@@ -37,7 +37,6 @@ func! s:ViewLatexHandler(jobid, data, event) dict
 endfunc
 let s:view_latex_handler = funcref('s:ViewLatexHandler')
 
-let b:make_file_f = funcref('s:ViewLatex')
 func! s:ViewLatex()
   if exists('g:latex_main_file') && g:latex_main_file !=# ''
     let l:bufnr = bufnr(g:latex_main_file)
@@ -65,3 +64,4 @@ func! s:ViewLatex()
 
   redraw!
 endfunc
+let b:make_file_f = funcref('s:ViewLatex')
