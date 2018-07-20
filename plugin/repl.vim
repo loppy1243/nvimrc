@@ -2,12 +2,12 @@ func! s:ReplEval(buf, lines)
   call vimrc#ReplEval(a:buf, a:lines)
 endfunc
 
-func! s:Make()
+func! s:Make(file)
   make
 endfunc
 
 command! -nargs=1 SetRunExpr let b:run_expr = <q-args>
-func! s:RunFile()
+func! s:RunFile(file)
   call b:repl_eval_f(g:repl_bufnr[&l:filetype], [b:run_expr])
 endfunc
 

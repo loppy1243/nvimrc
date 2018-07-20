@@ -249,20 +249,48 @@ func! vimrc#SplitWindowInDirection(...)
   return 1
 endfunc
 
+func! s:ModifiedMakeFile(file)
+  exe 'write '.b:backing_file
+  call b:prev_make_file_f(b:backing_file)
+endfunc
+
 func! vimrc#OpenMemo(...)
-  if a:0 > 1
-    echoerr 'Expected at most 1 argument, received '.a:0
-  elseif a:0 ==# 1
+  if a:0 > 2
+    echoerr 'Expected at most 2 arguments, received '.a:0
+  elseif a:0 >= 1
     let l:name = a:1
   else
     let l:name = 'default'
   endif
 
-  let l:name = 'memo://'.l:name
+  if a:0 == 2
+    let l:name = 'memo://'.l:name.'.'.a:2
+  else
+    let l:name = 'memo://'.l:name
+  endif
 
   if !bufexists(l:name)
     exe 'badd' l:name
+    let l:bufnr = bufnr(l:name)
+
+    if a:0 == 2
+      let l:f = tempname()
+
+      call setbufvar(l:bufnr, '&filetype', a:2)
+      call setbufvar(l:bufnr, 'backing_file', l:f)
+
+      exe 'au BufDelete,BufWipeout <buffer='.l:bufnr.'> !rm -f '.l:f
+
+      let Prev_make_file_f = getbufvar(l:bufnr, 'make_file_f')
+      if Prev_make_file_f !=# ''
+        call setbufvar(l:bufnr, 'prev_make_file_f', Prev_make_file_f)
+        call setbufvar(l:bufnr, 'make_file_f', funcref('s:ModifiedMakeFile'))
+      endif
+    else
+      call setbufvar(l:bufnr, '&filetype', 'memo')
+    endif
   endif
+  let l:bufnr = bufnr(l:name)
 
   " If open in the current tab, go to that; if open but not in current tab, go to the first in
   " the win_findbuf list.
@@ -278,7 +306,12 @@ func! vimrc#OpenMemo(...)
 
     exe l:tabwins[0][0].'tabnext'
     exe l:tabwins[0][1].'wincmd w'
-  " If not open, open it in a new tab.
+
+  " If not open and we're in a new buffer, open it there
+  elseif bufname('%') ==# ''
+    exe 'buffer '.l:bufnr
+
+  " Else open it in a new tab
   else
     exe 'tab split' l:name
   endif

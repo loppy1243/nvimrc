@@ -37,13 +37,13 @@ func! s:ViewLatexHandler(jobid, data, event) dict
 endfunc
 let s:view_latex_handler = funcref('s:ViewLatexHandler')
 
-func! s:ViewLatex()
+func! s:ViewLatex(file)
   if exists('g:latex_main_file') && g:latex_main_file !=# ''
     let l:bufnr = bufnr(g:latex_main_file)
     let l:file = g:latex_main_file
   else
-    let l:bufnr = bufnr('%')
-    let l:file = expand('%')
+    let l:bufnr = bufnr(a:file)
+    let l:file = a:file
   endif
 
   exe 'silent make' l:file

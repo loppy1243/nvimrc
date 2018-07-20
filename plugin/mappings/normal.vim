@@ -127,8 +127,6 @@ nnoremap <leader>d> mava<<esc>x`<x`a
 "nnoremap <leader>ss :echo synIDattr(synID(line('.'), col('.'), 1), 'name')<cr>
 nnoremap <leader>sS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<cr>
 
-nnoremap <leader>m :call vimrc#OpenMemo()<cr>
-
 " Source current file
 nnoremap <leader>ss :so %<cr>
 
@@ -164,8 +162,8 @@ nnoremap <localleader><localleader><localleader> :call <SID>SetEvalMotionBufnr()
 vnoremap <localleader><localleader> :<c-u>call <SID>SetEvalMotionBufnr()<cr>
                                    \:call <SID>EvalMotion('visual', visualmode())<cr>
 
-nnoremap \|\| :call b:run_file_f()<cr>
-nnoremap <localleader>ll :call b:make_file_f()<cr>
+nnoremap \|\| :call b:run_file_f(expand('%'))<cr>
+nnoremap <localleader>ll :call b:make_file_f(expand('%'))<cr>
 
 " Makes this available
 nnoremap <c-`> `
