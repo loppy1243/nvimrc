@@ -300,7 +300,7 @@ func! vimrc#OpenMemo(...)
     for l:tabwin in l:tabwins
       if l:tabwin[0] == tabpagenr()
         exe l:tabwin[1].'wincmd w'
-        return 1
+        return
       endif
     endfor
 
