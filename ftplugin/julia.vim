@@ -1,5 +1,4 @@
 setlocal tabstop=4
-setlocal indentexpr=""
 let b:comment_seq = '#'
 let b:comment_esc = ''
 let b:term_cmd = 'julia'
