@@ -106,6 +106,7 @@ func! <SID>SplitTermopen(cmd)
     call termopen(a:cmd)
     if !get(g:repl_bufnr, l:fty, 0)
       let g:repl_bufnr[l:fty] = bufnr('%')
+      setlocal nonumber
       exe 'au BufUnload <buffer> unlet g:repl_bufnr["'.l:fty.'"]'
     endif
   endif
