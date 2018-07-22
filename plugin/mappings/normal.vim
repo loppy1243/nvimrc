@@ -95,6 +95,7 @@ nnoremap <leader>S :call <SID>SplitTerm()<cr>
 func! <SID>SplitTerm()
   if vimrc#SplitWindowInDirection()
     terminal
+    setlocal nonumber
   endif
 endfunc
 
@@ -105,9 +106,6 @@ func! <SID>SplitTermopen(cmd)
     call termopen(a:cmd)
     if !get(g:repl_bufnr, l:fty, 0)
       let g:repl_bufnr[l:fty] = bufnr('%')
-      " TODO: Maybe make a vimrc#Term#Setup() function.
-      " FIXME: Doesn't seem to work.
-      setlocal nonumber
       exe 'au BufUnload <buffer> unlet g:repl_bufnr["'.l:fty.'"]'
     endif
   endif
