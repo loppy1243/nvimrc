@@ -1,3 +1,6 @@
+let g:paredit_mode = 0
+call PareditInitBuffer()
+
 setlocal tabstop=4
 let b:comment_seq = '#'
 let b:comment_esc = ''
