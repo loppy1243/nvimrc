@@ -10,6 +10,6 @@ command! -nargs=1 JuliaReplHelp call b:repl_eval_f(g:repl_bufnr['julia'], ['?'.<
 setlocal keywordprg=:JuliaReplHelp
 
 func! s:IncludeFile(file)
-  call b:repl_eval_f(g:repl_bufnr['julia'], ['include("'.a:file.'")'])
+  call b:repl_eval_f(g:repl_bufnr['julia'], ['include("'.fnameescape(a:file).'")'])
 endfunc
 let b:make_file_f = funcref('s:IncludeFile')
