@@ -4,7 +4,7 @@ func! vimrc#Git#Status()
   0read !git status
 endfunc
 
-func! s:CommitJobCtrl_old(job_id, data, event) dict
+func! s:CommitJobCtrl(job_id, data, event) dict
   if a:event ==# 'stdout' || a:event ==# 'stderr'
     let s:lines = extend(s:lines, a:data)
   elseif a:event ==# 'exit'
@@ -32,7 +32,7 @@ func! vimrc#Git#Commit()
   let s:lines = []
   " Sets g:gitcommit_window
   call jobstart(['git', 'commit'],
-\               {'on_stdout': funcref('s:CommitJobCtrl_old'),
-\                'on_stderr': funcref('s:CommitJobCtrl_old'),
-\                'on_exit': funcref('s:CommitJobCtrl_old')})
+\               {'on_stdout': funcref('s:CommitJobCtrl'),
+\                'on_stderr': funcref('s:CommitJobCtrl'),
+\                'on_exit': funcref('s:CommitJobCtrl')})
 endfunc
