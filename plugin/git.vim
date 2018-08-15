@@ -4,3 +4,4 @@ nnoremap <leader><leader>g :!git<space>
 nnoremap <leader><leader>a :!git add %<cr><cr>:echo 'Added file to index:' expand('%')<cr>
 nnoremap <leader><leader>A :!git add -u<cr><cr>:echo 'Updated index'<cr>
 nnoremap <leader><leader>p :new<cr>:call termopen("git push")<cr>
+nnoremap <leader><leader>d :tabnew<cr>:!git difftool -t nvimdiff -y %<cr>
