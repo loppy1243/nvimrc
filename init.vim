@@ -27,8 +27,8 @@ set expandtab
 set nowrap
 " Have screen always centered on cursor
 set scrolloff=999
-set colorcolumn=95
-set textwidth=0
+set textwidth=94
+set colorcolumn=81,95
 set laststatus=2
 " set foldmethod=marker
 set nofoldenable
@@ -39,7 +39,6 @@ set autoindent
 " *I* like them.
 set errorbells
 set formatoptions-=tro
-set textwidth=94
 set modeline
 set grepprg=grep\ -nH\ $*
 
