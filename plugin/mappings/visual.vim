@@ -40,3 +40,11 @@ vnoremap <leader>f <esc>ma'<$a <esc>:call vimrc#DashesForFold("{\{{")<cr>
 
 " Align the current selection to the mark specified
 vnoremap <expr> <leader>a vimrc#AlignToMark(mode())
+
+func! <SID>Format80()
+  let l:tw = &l:textwidth
+  let &l:textwidth = 80
+  normal! `<v`>gq
+  let &l:textwidth = l:tw
+endfunc
+vnoremap gQ :<c-u>call <SID>Format80()<cr>

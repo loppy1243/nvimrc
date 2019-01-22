@@ -191,12 +191,3 @@ nnoremap <M-l> :tabn<cr>
 " Non-clobbering :only mapping
 nnoremap <c-w>o :tab split<cr>
 nmap <c-w><c-o> <c-w>o
-
-"" gq but with textwidth=80
-func! <SID>Format80()
-  let l:tw = &l:textwidth
-  let &l:textwidth = 80
-  normal! gq
-  let &l:textwidth = l:tw
-endfunc
-noremap gQ :call <SID>Format80()<cr>
