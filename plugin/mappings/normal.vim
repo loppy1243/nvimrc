@@ -191,3 +191,18 @@ nnoremap <M-l> :tabn<cr>
 " Non-clobbering :only mapping
 nnoremap <c-w>o :tab split<cr>
 nmap <c-w><c-o> <c-w>o
+
+func! <SID>ToggleColorColumn(v1, v2)
+  if &l:colorcolumn ==# ''
+    let &l:colorcolumn = a:v1
+  elseif !exists('s:colorcol_prev')
+    let s:colorcol_prev = a:v1
+    let &l:colorcolumn = a:v2
+  else
+    let l:tmp = &l:colorcolumn
+    let &l:colorcolumn = s:colorcol_prev
+    let s:colorcol_prev = l:tmp
+  endif
+endfunc
+
+noremap <M-c> :call <SID>ToggleColorColumn(&l:textwidth+1, 81)<cr>

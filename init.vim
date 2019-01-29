@@ -28,7 +28,7 @@ set nowrap
 " Have screen always centered on cursor
 set scrolloff=999
 set textwidth=94
-set colorcolumn=81,95
+set colorcolumn=95
 set laststatus=2
 " set foldmethod=marker
 set nofoldenable
