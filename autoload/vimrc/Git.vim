@@ -36,3 +36,16 @@ func! vimrc#Git#Commit()
 \                'on_stderr': funcref('s:CommitJobCtrl'),
 \                'on_exit': funcref('s:CommitJobCtrl')})
 endfunc
+
+func! vimrc#Git#AmendCommit()
+  let s:lines = []
+  " Sets g:gitcommit_window
+  call jobstart(['git', 'commit', '--amend'],
+\               {'on_stdout': funcref('s:CommitJobCtrl'),
+\                'on_stderr': funcref('s:CommitJobCtrl'),
+\                'on_exit': funcref('s:CommitJobCtrl')})
+endfunc
+
+func! vimrc#Git#AmendCommitNoEdit()
+  !git commit --amend --no-edit
+endfunc
