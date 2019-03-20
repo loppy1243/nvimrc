@@ -5,8 +5,6 @@
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 vnoremap H ^
 vnoremap L $
-vnoremap J <c-f>
-vnoremap K <c-b>
 
 "" Move by units delimited by whitespace
 vnoremap <c-h> omb<esc>`<:call vimrc#MoveToPreviousChunk()<cr>
