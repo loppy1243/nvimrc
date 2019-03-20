@@ -3,7 +3,7 @@ let b:comment_seq = '#'
 let b:comment_esc = ''
 let b:term_cmd = 'python3'
 
-command -nargs=1 PythonReplHelp call b:repl_eval_f(g:repl_bufnr['python'], ['help('.<q-args>.')'])
+command! -nargs=1 PythonReplHelp call b:repl_eval_f(g:repl_bufnr['python'], ['help('.<q-args>.')'])
 setlocal keywordprg=:PythonReplHelp
 
 func! s:ImportMod()
