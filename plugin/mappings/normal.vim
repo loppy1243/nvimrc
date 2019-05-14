@@ -206,3 +206,18 @@ func! <SID>ToggleColorColumn(v1, v2)
 endfunc
 
 noremap <M-c> :call <SID>ToggleColorColumn(&l:textwidth+1, 81)<cr>
+
+func! <SID>ToggleConcealLevel()
+  if !exists('s:prev_cl')
+    s:prev_cl = &l:conceallevel == 0 ? 2 : 0
+  endif
+
+  let l:prev_cl = &l:conceallevel
+  if &l:conceallevel == 0
+    let &l:conceallevel = s:prev_cl
+  else
+    let &l:conceallevel = 0
+  endif
+  let s:prev_cl = l:prev_cl
+endfunc
+nnoremap <M-o> :call <SID>ToggleConcealLevel()<cr>
