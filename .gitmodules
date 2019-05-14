@@ -16,3 +16,6 @@
 [submodule "pack/git-submodules/start/vimpyter"]
 	path = pack/git-submodules/start/vimpyter
 	url = https://github.com/szymonmaszke/vimpyter
+[submodule "pack/git-submodules/start/vimwiki"]
+	path = pack/git-submodules/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
