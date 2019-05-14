@@ -328,3 +328,14 @@ func! vimrc#ReplEval(buf, text)
 
   call jobsend(l:id, l:cmd)
 endfunc
+
+func! vimrc#CmdHere(bang, cmd)
+  let @a=substitute(system(a:cmd), '\n\+$', '', '')
+  if a:bang ==# '!'
+    let l:mode = 'a'
+  else
+    let l:mode = 'i'
+  endif
+
+  exe 'normal! '.l:mode."\<c-R>a"
+endfunc
