@@ -1,8 +1,8 @@
 command! -nargs=? Memo call vimrc#OpenMemo(<f-args>)
 
 command! -nargs=1 -bang CmdHere call vimrc#CmdHere(<q-bang>, <q-args>)
-nnoremap <c-]> :CmdHere<space>
-nnoremap <M-]> :CmdHere!<space>
+nnoremap <c-=> :CmdHere<space>
+nnoremap <M-=> :CmdHere!<space>
 
 func! <SID>CmdInsertHere(cmd)
   call vimrc#CmdHere('!', a:cmd)
@@ -14,4 +14,4 @@ func! <SID>CmdInsertHere(cmd)
   end
 endfunc
 command! -nargs=1 CmdInsertHere call <SID>CmdInsertHere(<q-args>)
-inoremap <c-]> <esc>:CmdInsertHere<space>
+inoremap <c-=> <esc>:CmdInsertHere<space>
