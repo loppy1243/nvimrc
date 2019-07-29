@@ -27,7 +27,7 @@ set expandtab
 set nowrap
 " Have screen always centered on cursor
 set scrolloff=999
-set textwidth=94
+set textwidth=80
 let &colorcolumn = &textwidth + 1
 set laststatus=2
 " set foldmethod=marker
