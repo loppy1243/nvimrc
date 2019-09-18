@@ -19,3 +19,6 @@
 [submodule "pack/git-submodules/start/vimwiki"]
 	path = pack/git-submodules/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule "pack/git-submodules/start/agda-vim"]
+	path = pack/git-submodules/start/agda-vim
+	url = https://github.com/derekelkins/agda-vim
