@@ -221,3 +221,14 @@ func! <SID>ToggleConcealLevel()
   let s:prev_cl = l:prev_cl
 endfunc
 nnoremap <M-o> :call <SID>ToggleConcealLevel()<cr>
+
+func! <SID>ToggleTextwrap()
+  if exists('b:prev_textwidth') && b:prev_textwidth != 0
+    let &l:textwidth = b:prev_textwidth
+    let b:prev_textwidth = 0
+  else
+    let b:prev_textwidth = &l:textwidth
+    setlocal textwidth=0
+  endif
+endfunc
+nnoremap <M-w> :call <SID>ToggleTextwrap()<cr>
