@@ -232,3 +232,17 @@ func! <SID>ToggleTextwrap()
   endif
 endfunc
 nnoremap <M-w> :call <SID>ToggleTextwrap()<cr>
+
+func! <SID>ToggleFontSize()
+  if !exists('s:fonttoggle')
+    let s:fonttoggle = 0
+  endif
+
+  if s:fonttoggle
+    exe 'GuiFont!' g:guifont.':h10'
+  else
+    exe 'GuiFont!' g:guifont.':h8'
+  endif
+  let s:fonttoggle = !s:fonttoggle
+endfunc
+nnoremap <M-f> :call <SID>ToggleFontSize()<cr>

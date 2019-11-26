@@ -27,7 +27,7 @@ set expandtab
 set nowrap
 " Have screen always centered on cursor
 set scrolloff=999
-set textwidth=90
+set textwidth=80
 let &colorcolumn = &textwidth + 1
 set laststatus=2
 " set foldmethod=marker
@@ -81,6 +81,9 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 
 "" Vimpyter
 let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
+
+"" Agda
+let g:agda_extraincpaths = ['/usr/share/agda-stdlib/']
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'

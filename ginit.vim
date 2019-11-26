@@ -22,7 +22,8 @@ if exists('g:GuiLoaded')
 "  hi Underlined guifg=Blue
 "  hi Todo guifg=Black
 
-  GuiFont Fira Code Medium:h9
+  let g:guifont = 'Fira Code Medium'
+  exe 'GuiFont' g:guifont.':h10'
 
   " No toolbar
   set guioptions-=T
