@@ -22,7 +22,7 @@ if exists('g:GuiLoaded')
 "  hi Underlined guifg=Blue
 "  hi Todo guifg=Black
 
-  GuiFont Fira Code Medium:h16
+  GuiFont Fira Code Medium:h9
 
   " No toolbar
   set guioptions-=T
