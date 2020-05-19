@@ -1,3 +1,3 @@
 #!/bin/sh
 
-DISPLAY=':0.0' exec mupdf-x11 "$@"
+DISPLAY=':0.0' exec mupdf "$@"
