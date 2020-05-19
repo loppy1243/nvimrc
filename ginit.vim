@@ -23,7 +23,7 @@ if exists('g:GuiLoaded')
 "  hi Todo guifg=Black
 
   let g:guifont = 'Fira Code Medium'
-  exe 'GuiFont' g:guifont.':h10'
+  exe 'GuiFont!' g:guifont.':h10'
 
   " No toolbar
   set guioptions-=T
