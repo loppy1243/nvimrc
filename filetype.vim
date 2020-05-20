@@ -4,6 +4,7 @@ au BufNewFile,BufReadPost *.cl,*.cu  setfiletype c
 au BufNewFile,BufReadPost *.plt      setfiletype gnuplot
 au BufNewFile,BufReadPost *.sb       setfiletype sh
 au BufNewFile,BufReadPost *.cls      setfiletype tex
+au BufNewFile,BufReadPost *.xsh      setfiletype python
 
 " Fix paredit issue.
 au BufNewFile,BufRead,BufReadPost *.jl setfiletype julia
