@@ -89,3 +89,14 @@ if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
   let $GIT_EDITOR = $VISUAL
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" Plugins (vim-plug)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'idris-hackers/idris-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'lervag/vimtex'
+call plug#end()
