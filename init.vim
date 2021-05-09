@@ -6,7 +6,7 @@ syntax on
 filetype plugin on
 filetype indent off
 hi ColorColumn ctermbg=Red guibg=DarkRed
-colorscheme vimrc
+colorscheme vimrc_slate
 
 
 if exists('s:executed')
