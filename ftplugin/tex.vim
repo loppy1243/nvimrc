@@ -16,8 +16,7 @@ command! -nargs=1 LatexMakeBlockInline call vimrc#Latex#MakeBlock('l', <f-args>)
 
 nnoremap <buffer> <localleader><localleader> :LatexMakeBlockNormal<space>
 vnoremap <buffer> <localleader><localleader> :<c-u>LatexMakeBlockVisual<space>
-inoremap <buffer> <C-\> <esc>:LatexMakeBlockNormal<space>
-nnoremap <buffer> <localleader>a :LatexMakeBlockInline<space>
+inoremap <buffer> <C-\> <esc>:LatexMakeBlockInline<space>
 
 command! -nargs=? LatexSetMain call <SID>LatexSetMain(<f-args>)
 nnoremap <localleader>L :LatexSetMain<cr>
