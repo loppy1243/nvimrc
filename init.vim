@@ -51,6 +51,17 @@ set statusline+=%{vimrc#FiletypeStatus()}
 " (line_number, column_number)/number_of_lines
 set statusline+=\ -\ (%04.4l,%03.3c,%05.5o)/%L
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" Plugins (vim-plug)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'idris-hackers/idris-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'lervag/vimtex'
+call plug#end()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Variables.
@@ -79,6 +90,9 @@ let g:tex_nospell = 1
 let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
+"" vimtex
+let g:vimtex_syntax_conceal_default=0
+
 "" Vimpyter
 let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
 
@@ -89,14 +103,3 @@ if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
   let $GIT_EDITOR = $VISUAL
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" Plugins (vim-plug)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'idris-hackers/idris-vim'
-Plug 'Yggdroot/indentLine'
-Plug 'lervag/vimtex'
-call plug#end()
