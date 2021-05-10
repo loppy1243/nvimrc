@@ -60,6 +60,8 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 
@@ -91,13 +93,19 @@ let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 "" vimtex
-let g:vimtex_syntax_conceal_default=0
+let g:vimtex_syntax_conceal_default = 0
 
 "" Vimpyter
 let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
 
 "" Agda
 let g:agda_extraincpaths = ['/usr/share/agda-stdlib/']
+
+"" UltiSnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+let g:UltiSnipsEditSplit = 'vertical'
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
