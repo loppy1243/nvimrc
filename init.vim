@@ -61,9 +61,7 @@ Plug 'idris-hackers/idris-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 call plug#end()
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Variables.
