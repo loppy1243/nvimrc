@@ -8,12 +8,10 @@ filetype indent off
 hi ColorColumn ctermbg=Red guibg=DarkRed
 colorscheme vimrc_slate
 
-
 if exists('s:executed')
   finish
 endif
 let s:executed = 1
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"" All things option.
@@ -100,9 +98,9 @@ let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
 let g:agda_extraincpaths = ['/usr/share/agda-stdlib/']
 
 "" UltiSnips
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+let g:UltiSnipsExpandTrigger = '<m-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<m-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<m-k>'
 let g:UltiSnipsEditSplit = 'vertical'
 
 if has('nvim')
