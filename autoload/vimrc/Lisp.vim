@@ -4,10 +4,10 @@ func! vimrc#Lisp#Setup()
   nnoremap <buffer> [[ :call vimrc#Lisp#PrevOpeningParen()<cr>
   nnoremap <buffer> ][ :call vimrc#Lisp#NextOpeningParen()<cr>
 
-  inoremap <buffer> ( ()h
-  inoremap <buffer> [ []h
-  inoremap <buffer> { {}h
-  inoremap <buffer> " ""h
+  inoremap <buffer> ( ()<Left>
+  inoremap <buffer> [ []<Left>
+  inoremap <buffer> { {}<Left>
+  inoremap <buffer> " ""<Left>
 
   let g:rainbow#pairs = [['(', ')'], ['[', ']']]
   RainbowParentheses
