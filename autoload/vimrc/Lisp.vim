@@ -8,6 +8,7 @@ func! vimrc#Lisp#Setup()
   inoremap <buffer> [ []<Left>
   inoremap <buffer> { {}<Left>
   inoremap <buffer> " ""<Left>
+  inoremap <buffer> <s-backspace> <space><esc>hmA%x`Axa<backspace>
 
   let g:rainbow#pairs = [['(', ')'], ['[', ']']]
   RainbowParentheses
