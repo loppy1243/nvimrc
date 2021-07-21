@@ -33,7 +33,7 @@ nnoremap <leader>nh :nohlsearch<cr>
 " Indent
 nnoremap <tab> >>
 " Dedent.
-nnoremap <space><tab> <<
+nnoremap <s-tab> <<
 
 " Newline below current
 nnoremap <cr> o<esc>

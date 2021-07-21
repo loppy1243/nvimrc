@@ -19,7 +19,7 @@ vnoremap <c-k> omb<esc>`<:call vimrc#MoveToPreviousBlock()<cr>
 " Indent
 vnoremap <tab> >
 " Dedent
-vnoremap <space><tab> <
+vnoremap <s-tab> <
 
 "" Commenting
 vnoremap <expr> <leader>c '0<c-v>I' . b:comment_seq . '<esc>'
