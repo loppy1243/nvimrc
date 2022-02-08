@@ -1,4 +1,3 @@
-""" Disable plugins that override *my* mappings
 """ FIXME: This still necessary?
 nmap <Plug>DisableIMAP_JumpForward <Plug>IMAP_JumpForward
 
@@ -59,6 +58,9 @@ Plug 'idris-hackers/idris-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'HiPhish/guile.vim'
+Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,17 +81,40 @@ let g:repl_bufnr = {}
 
 "" indentLine
 let g:indentLine_faster = 1
+let g:indentLine_fileTypeExclude = ['markdown']
+au FileType markdown setlocal conceallevel=0
 
 "" LaTeX
-let g:tex_flavor = 'latex'
-let g:tex_conceal = ''
-let g:tex_fold_enabled = 0
-let g:tex_nospell = 1
-let g:Tex_ViewRule_pdf = 'mupdf'
+"let g:tex_flavor = 'latex'
+"let g:tex_conceal = ''
+"let g:tex_fold_enabled = 0
+"let g:tex_nospell = 1
+"let g:Tex_ViewRule_pdf = 'mupdf'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 "" vimtex
+let g:llpp_socket = tempname()
+let $NVIM_LLPP_SOCKET = g:llpp_socket
+let g:vimtex_view_general_viewer = 'llpp -remote ' . g:llpp_socket
 let g:vimtex_syntax_conceal_default = 0
+let g:vimtex_compiler_latexmk = {
+   \'build_dir' : 'build',
+   \'options' : [
+   \    '-verbose',
+   \    '-file-line-error',
+   \    '-synctex=1',
+   \    '-interaction=nonstopmode',
+   \    '-halt-on-error',
+   \    '-shell-escape'
+   \]
+\} 
+let g:vimtex_quickfix_ignore_filters = [
+   \'[dD]raft',
+   \'Missing width',
+   \'Missing height',
+   \'Warning: Marginpar',
+   \'Package caption Warning'
+\]
 
 "" Vimpyter
 let g:vimpyter_jupyter_cmd = 'anaconda jupyter'
