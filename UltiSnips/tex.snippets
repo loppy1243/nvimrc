@@ -4,6 +4,29 @@ snippet \begin "\begin{...}...\end{...}"
 \\end\{$1\}
 endsnippet
 
-snippet \begin{ "\begin{...}...\end{...}"
+snippet {\begin "{\begin{...}...\end{...}}"
+\{\\begin\{$1\}
+${VISUAL:		 }$0
+ \\end\{$1\}
+endsnippet
+
+snippet \begin{ "inline \begin{...}...\end{...}"
 \\begin\{$1\} ${VISUAL:}$0 \\end\{$1\}
+endsnippet
+
+snippet \[ "\[  ... \]"
+\\[
+		${VISUAL:}$0
+\\]
+endsnippet
+
+snippet \newc "\newcommand..."
+\\newcommand\\$1
+   \{$0\}
+endsnippet
+
+snippet \newe "\newenvironment..."
+\\newenvironment{$1}%
+   \{$2\}%
+   \{$3\}
 endsnippet
