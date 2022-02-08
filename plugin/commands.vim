@@ -15,3 +15,5 @@ func! <SID>CmdInsertHere(cmd)
 endfunc
 command! -nargs=1 CmdInsertHere call <SID>CmdInsertHere(<q-args>)
 inoremap <c-=> <esc>:CmdInsertHere<space>
+
+command! BDAll silent! execute "%bd|e#|bd#"
