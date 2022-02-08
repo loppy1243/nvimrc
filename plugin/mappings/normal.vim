@@ -90,28 +90,6 @@ nnoremap MM 'm
 " Column align to column of specified mark from current position
 nnoremap <leader>a :call vimrc#AlignToMark('n')<cr>
 
-"" Open terminals
-nnoremap <leader>S :call <SID>SplitTerm()<cr>
-func! <SID>SplitTerm()
-  if vimrc#SplitWindowInDirection()
-    terminal
-    setlocal nonumber
-  endif
-endfunc
-
-nnoremap <localleader>s :call <SID>SplitTermopen(b:term_cmd)<cr>
-func! <SID>SplitTermopen(cmd)
-  let l:fty = &l:filetype
-  if vimrc#SplitWindowInDirection()
-    call termopen(a:cmd)
-    if !get(g:repl_bufnr, l:fty, 0)
-      let g:repl_bufnr[l:fty] = bufnr('%')
-      setlocal nonumber
-      exe 'au BufUnload <buffer> unlet g:repl_bufnr["'.l:fty.'"]'
-    endif
-  endif
-endfunc
-
 "" Delete the surrounding brackets.
 nnoremap <leader>d( ma[(mb])x`bx`a
 nnoremap <leader>d{ ma[{mb]}x`bx`a
@@ -162,7 +140,7 @@ vnoremap <localleader><localleader> :<c-u>call <SID>SetEvalMotionBufnr()<cr>
                                    \:call <SID>EvalMotion('visual', visualmode())<cr>
 
 nnoremap \|\| :call b:run_file_f(expand('%'))<cr>
-nnoremap <localleader>ll :call b:make_file_f(expand('%'))<cr>
+"nnoremap <localleader>ll :call b:make_file_f(expand('%'))<cr>
 
 " Makes this available
 nnoremap <c-`> `
