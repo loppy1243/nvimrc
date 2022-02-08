@@ -60,7 +60,7 @@ Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'HiPhish/guile.vim'
-Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+Plug 'chlorm/vim-syntax-elvish'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
