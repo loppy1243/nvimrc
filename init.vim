@@ -96,7 +96,7 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:llpp_socket = tempname()
 let $NVIM_LLPP_SOCKET = g:llpp_socket
 let g:vimtex_view_general_viewer = 'llpp -remote ' . g:llpp_socket
-let g:vimtex_syntax_conceal_default = 0
+let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_compiler_latexmk = {
    \'build_dir' : 'build',
    \'options' : [
