@@ -104,8 +104,7 @@ let g:vimtex_compiler_latexmk = {
    \    '-file-line-error',
    \    '-synctex=1',
    \    '-interaction=nonstopmode',
-   \    '-halt-on-error',
-   \    '-shell-escape'
+   \    '-halt-on-error'
    \]
 \} 
 let g:vimtex_quickfix_ignore_filters = [
