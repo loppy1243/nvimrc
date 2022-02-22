@@ -1,0 +1,25 @@
+snippet func "function ...(...) ... end"
+function $1($2)
+	$0
+end
+endsnippet
+
+snippet function "function ...(...) ... end"
+function $1($2)
+	$0
+end
+endsnippet
+
+snippet macro "macro ...(...) ... end"
+macro $1($2)
+	$0
+end
+endsnippet
+
+snippet if "if ... else .... end"
+if $1
+	${2:
+else
+	$3}
+end
+endsnippet
