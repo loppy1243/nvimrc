@@ -15,7 +15,11 @@ let s:executed = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"" All things option.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+set shell=elvish
+set shellredir=>%s\ 2>&1
+set shellpipe=2>&1\|\ tee
+" Cannot figure out how to get elvish to work with shelltemp
+set noshelltemp
 set number
 set numberwidth=4
 set tabstop=2
