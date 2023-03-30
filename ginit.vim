@@ -1,6 +1,6 @@
 if exists('g:GuiLoaded')
   let g:guifont = 'Fira Code Medium'
-  exe 'GuiFont!' g:guifont.':h10'
+  exe 'GuiFont!' g:guifont.':h11'
 
   " No toolbar
   set guioptions-=T
