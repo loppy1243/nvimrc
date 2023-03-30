@@ -17,6 +17,26 @@ nnoremap L $
 nnoremap <c-j> :call vimrc#MoveToNextBlock()<cr>
 nnoremap <c-k> :call vimrc#MoveToPreviousBlock()<cr>
 
+nnoremap <c-s-k> K
+nnoremap J :call <SID>HalveLeft()<cr>
+nnoremap K :call <SID>HalveRight()<cr>
+func! <SID>HalveLeft()
+    let l:start = getpos('.')
+    normal! ^
+    let l:end = getpos('.')
+
+    let l:start[2] = l:end[2] + (l:start[2] - l:end[2])/2
+    call setpos('.', l:start)
+endfunc
+func! <SID>HalveRight()
+    let l:start = getpos('.')
+    normal! $
+    let l:end = getpos('.')
+
+    let l:start[2] = l:start[2] + (l:end[2] - l:start[2])/2
+    call setpos('.', l:start)
+endfunc
+
 " Join line to line below
 nnoremap <leader>j J
 " to line above
