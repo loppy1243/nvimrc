@@ -7,13 +7,8 @@
 "" 'Strong' versions of the basic movements (far left, page up, etc.)
 nnoremap H ^
 nnoremap L $
-"nnoremap J <c-f>
-"nnoremap K <c-b>
 
 "" Move by units delimited by whitespace
-" Removed and replaced further down.
-"nnoremap <c-h> :call vimrc#MoveToPreviousChunk()<cr>
-"nnoremap <c-l> :call vimrc#MoveToNextChunk()<cr>
 nnoremap <c-j> :call vimrc#MoveToNextBlock()<cr>
 nnoremap <c-k> :call vimrc#MoveToPreviousBlock()<cr>
 
@@ -189,6 +184,16 @@ nnoremap <M-l> :tabn<cr>
 " Non-clobbering :only mapping
 nnoremap <c-w>o :tab split<cr>
 nmap <c-w><c-o> <c-w>o
+
+" Window management
+nnoremap <c-left> <c-w>h
+nnoremap <c-right> <c-w>l
+nnoremap <c-up> <c-w>k
+nnoremap <c-down> <c-w>j
+
+" Tab management
+nnoremap <c-s-left> :tabN<cr>
+nnoremap <c-s-right> :tabn<cr>
 
 func! <SID>ToggleColorColumn(v1, v2)
   if &l:colorcolumn ==# ''
