@@ -185,6 +185,9 @@ nnoremap <M-l> :tabn<cr>
 nnoremap <c-w>o :tab split<cr>
 nmap <c-w><c-o> <c-w>o
 
+" Toggle color column
+noremap <M-c> :call <SID>ToggleColorColumn(&l:textwidth+1, 81)<cr>
+
 " Window management
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
@@ -194,6 +197,9 @@ nnoremap <c-down> <c-w>j
 " Tab management
 nnoremap <c-s-left> :tabN<cr>
 nnoremap <c-s-right> :tabn<cr>
+
+" Map jump forward to something usable
+nnoremap <c-s-o> <c-i>
 
 func! <SID>ToggleColorColumn(v1, v2)
   if &l:colorcolumn ==# ''
@@ -207,8 +213,6 @@ func! <SID>ToggleColorColumn(v1, v2)
     let s:colorcol_prev = l:tmp
   endif
 endfunc
-
-noremap <M-c> :call <SID>ToggleColorColumn(&l:textwidth+1, 81)<cr>
 
 func! <SID>ToggleConcealLevel()
   if !exists('s:prev_cl')
