@@ -61,10 +61,11 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'idris-hackers/idris-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'lervag/vimtex'
-Plug 'SirVer/ultisnips'
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*', 'do': 'make install_jsregexp'}
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'HiPhish/guile.vim'
 Plug 'chlorm/vim-syntax-elvish'
+Plug 'kaarmu/typst.vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,6 +129,9 @@ let g:UltiSnipsExpandTrigger = '<m-tab>'
 let g:UltiSnipsJumpForwardTrigger = '<m-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<m-k>'
 let g:UltiSnipsEditSplit = 'vertical'
+
+"" Typst
+let g:typst_cmd = "~/repos/typst/target/debug/typst"
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
