@@ -72,6 +72,8 @@ call plug#end()
 """" Variables.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let $NVIM_LISTEN_ADDRESS = v:servername
+
 "" Leaders
 let g:mapleader = ','
 let g:maplocalleader = '\'
