@@ -33,6 +33,42 @@ function! <SID>GitDiff(file, bang)
     endif
 endfunction
 
+command! -nargs=0 DiffClose call <SID>DiffClose()
+function! <SID>DiffClose()
+    let l:cur_buf = bufnr()
+    for l:buf in tabpagebuflist()
+        if l:buf !=# l:cur_buf && getbufvar(l:buf, '&diff')
+            execute 'bd ' . l:buf
+        endif
+    endfor
+endfunction
+
+command! -nargs=+ GitDiffCmdTab call <SID>GitDiffCmd(v:false, <f-args>)
+command! -nargs=+ GitDiffCmdNoTab call <SID>GitDiffCmd(v:true, <f-args>)
+function! <SID>GitDiffCmd(tab, ...)
+    call assert_true(a:0 !=# 2, "expected two file names")
+    let l:local = a:1
+    let l:remote = a:2
+
+    if a:tab
+        exe 'tabedit ' . l:local
+    else
+        exe 'edit ' . l:local
+    endif
+
+    diffthis
+    setlocal ro
+    setlocal bufhidden=delete
+    exe 'vert diffsplit ' . l:remote
+    setlocal noro
+
+    if a:tab
+        nnoremap <buffer> <leader><leader>d :tabclose<cr>
+    else
+        nnoremap <buffer> <leader><leader>d :DiffClose<cr>:nunmap <buffer> <leader><leader>d<cr>
+    endif
+endfunction
+
 command! -nargs=? -bang GitLog call <SID>GitLog(<q-args>, <bang>0)
 function! <SID>GitLog(file, bang)
     if a:bang
