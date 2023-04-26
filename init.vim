@@ -66,6 +66,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'HiPhish/guile.vim'
 Plug 'chlorm/vim-syntax-elvish'
 Plug 'kaarmu/typst.vim'
+Plug 'kovisoft/slimv'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -150,6 +151,10 @@ smap <silent><expr> <c-space> luasnup#choice_active() ? '<Plug>luasnip-next-choi
 
 "" Typst
 let g:typst_cmd = "~/repos/typst/target/debug/typst"
+
+"" Slimv
+let g:slimv_leader = g:maplocalleader
+let g:paredit_leader = g:maplocalleader
 
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
