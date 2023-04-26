@@ -73,6 +73,7 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let $NVIM_LISTEN_ADDRESS = v:servername
+let g:vimsyn_embed = 0
 
 "" Leaders
 let g:mapleader = ','
