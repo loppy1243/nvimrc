@@ -63,9 +63,9 @@ function! <SID>GitDiffCmd(tab, ...)
     setlocal noro
 
     if a:tab
-        nnoremap <buffer> <leader><leader>d :tabclose<cr>
+        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>tabclose<cr>
     else
-        nnoremap <buffer> <leader><leader>d :DiffClose<cr>:nunmap <buffer> <leader><leader>d<cr>
+        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>DiffClose<cr>
     endif
 endfunction
 
