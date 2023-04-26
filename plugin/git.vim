@@ -43,8 +43,8 @@ function! <SID>DiffClose()
     endfor
 endfunction
 
-command! -nargs=+ GitDiffCmdTab call <SID>GitDiffCmd(v:false, <f-args>)
-command! -nargs=+ GitDiffCmdNoTab call <SID>GitDiffCmd(v:true, <f-args>)
+command! -nargs=+ GitDiffCmdTab call <SID>GitDiffCmd(v:true, <f-args>)
+command! -nargs=+ GitDiffCmdNoTab call <SID>GitDiffCmd(v:false, <f-args>)
 function! <SID>GitDiffCmd(tab, ...)
     call assert_true(a:0 !=# 2, "expected two file names")
     let l:local = a:1
