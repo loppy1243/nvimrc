@@ -1,1 +1,0 @@
-call vimrc#Lisp#Setup()

@@ -1,5 +1,5 @@
 nnoremap <leader><leader><leader> :call vimrc#Git#Commit()<cr>
-nnoremap <leader><leader><s-,> :call vimrc#Git#AmendCommit()<cr>
+nnoremap <leader><leader>< :call vimrc#Git#AmendCommit()<cr>
 nnoremap <leader><leader><c-,> :call vimrc#Git#AmendCommitNoEdit()<cr>
 "nnoremap <leader><leader>s :call vimrc#Git#Status()<cr>
 nnoremap <leader><leader>s :!git status -bs<cr>
