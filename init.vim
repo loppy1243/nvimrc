@@ -60,6 +60,7 @@ end
 """" Plugins (vim-plug)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if $USER !=# "root"
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'idris-hackers/idris-vim'
@@ -72,6 +73,7 @@ Plug 'chlorm/vim-syntax-elvish'
 Plug 'kaarmu/typst.vim'
 Plug 'kovisoft/slimv'
 call plug#end()
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Variables.
