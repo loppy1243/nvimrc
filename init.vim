@@ -172,7 +172,8 @@ if $USER !=# "root"
 endif
 
 "" Slimv
-let g:slimv_leader = g:maplocalleader
+let g:slimv_keybindings = 1
+let g:slimv_leader = g:maplocalleader . g:maplocalleader
 let g:paredit_leader = g:maplocalleader
 
 "" markdown-preview
