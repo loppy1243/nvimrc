@@ -73,6 +73,7 @@ Plug 'chlorm/vim-syntax-elvish'
 Plug 'kaarmu/typst.vim'
 Plug 'kovisoft/slimv'
 Plug 'neovim/nvim-lspconfig'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 endif
 
@@ -172,6 +173,12 @@ endif
 let g:slimv_leader = g:maplocalleader
 let g:paredit_leader = g:maplocalleader
 
+"" markdown-preview
+let g:mkdp_browser = 'vimb'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" End.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
   let $GIT_EDITOR = $VISUAL
