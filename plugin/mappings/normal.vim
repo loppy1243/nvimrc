@@ -53,14 +53,6 @@ nnoremap <cr> o<esc>
 nnoremap <s-cr> O<esc>
 " For vim
 
-" Move line down
-nnoremap <leader>mj dd$p
-" Up
-nnoremap <leader>mk :exe 'normal! dd' . (line('.') - 1) . 'G0P'<cr>
-
-"" Split a window to the left, right, up, and down
-nnoremap <leader>s :call vimrc#SplitWindowInDirection()<cr>
-
 "" Very magic in searches
 nnoremap / /\v
 nnoremap ? ?\v
@@ -71,9 +63,6 @@ nnoremap <leader>w :match ErrorMsg /\v\s+$/<cr>
 nnoremap <leader>W :match<cr>
 " Delete
 nnoremap <leader>dw :%s/\v\s+$//<cr>
-
-"" Swap windows in the h,j,k,l directions
-nnoremap <c-w>s :call vimrc#SwapWindowInDirection()<cr>
 
 " Quick macro access; uses macro 'q'.
 nnoremap > @q
@@ -172,26 +161,8 @@ nnoremap T :call <SID>CachedF('T', 1)<cr>
 nnoremap <c-h> :call <SID>CachedF('F', 0)<cr>
 nnoremap <c-l> :call <SID>CachedF('f', 0)<cr>
 
-" Convenient tab moving
-nnoremap <M-h> :tabN<cr>
-nnoremap <M-l> :tabn<cr>
-
-" Non-clobbering :only mapping
-nnoremap <c-w>o :tab split<cr>
-nmap <c-w><c-o> <c-w>o
-
 " Toggle color column
 noremap <M-c> :call <SID>ToggleColorColumn(&l:textwidth+1, 81)<cr>
-
-" Window management
-nnoremap <c-left> <c-w>h
-nnoremap <c-right> <c-w>l
-nnoremap <c-up> <c-w>k
-nnoremap <c-down> <c-w>j
-
-" Tab management
-nnoremap <c-s-left> :tabN<cr>
-nnoremap <c-s-right> :tabn<cr>
 
 " Map jump forward to something usable
 nnoremap <c-s-o> <c-i>
