@@ -143,13 +143,15 @@ let g:UltiSnipsJumpBackwardTrigger = '<m-k>'
 let g:UltiSnipsEditSplit = 'vertical'
 
 "" LuaSnips
-lua <<
-require("luasnip").config.set_config({
-    enable_autosnippets = true,
-    store_selection_keys = "<c-tab>",
-})
+if $USER !=# "root"
+    lua <<
+    require("luasnip").config.set_config({
+        enable_autosnippets = true,
+        store_selection_keys = "<c-tab>",
+    })
 .
-lua require("luasnip.loaders.from_lua").lazy_load({paths = vim.env.MYVIMRC .. "/luasnippets"})
+    lua require("luasnip.loaders.from_lua").lazy_load({paths = vim.env.MYVIMRC:match("(.*/)") .. "luasnippets"})
+endif
 imap <silent><expr> <c-tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-tab>'
 smap <silent><expr> <c-tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<c-tab>'
 imap <silent><expr> <c-s-tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<c-s-tab>'
