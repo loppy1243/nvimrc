@@ -110,7 +110,7 @@ au FileType markdown setlocal conceallevel=0
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 "" vimtex
-let g:vimtex_view_general_viewer = 'llpp'
+let g:vimtex_view_general_viewer = 'mupdf'
 let g:vimtex_syntax_conceal_disable = 1
 let g:vimtex_compiler_latexmk = {
    \'build_dir' : 'build',
