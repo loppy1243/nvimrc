@@ -13,7 +13,33 @@ func! vimrc#DashesForFold(end_str)
     " TODO, if ever
   endif
 endfunc
- 
+
+func! vimrc#SplitWindowInDirection(...)
+  if a:0 > 1
+    echoerr 'Expected at most 1 argument, received '.a:0
+    return 0
+  elseif a:0 ==# 1
+    let l:c = a:0
+  else
+    let l:c = vimrc#InputCharTimeout()
+    if l:c is 0
+      return 0
+    endif
+  endif
+
+  if l:c ==? 'h'
+    leftabove vnew
+  elseif l:c ==? 'l'
+    rightbelow vnew
+  elseif l:c ==? 'j'
+    belowright new
+  elseif l:c ==? 'k'
+    aboveleft new
+  endif
+
+  return 1
+endfunc
+
 "" Swaps the current window with the window placed in the h/j/k/l direction
 "" dir.
 func! vimrc#SwapWindowInDirection(...)
@@ -198,55 +224,6 @@ func! vimrc#SingleQuoteOperator(type)
   else
     echom 'The world has ended.'
   endif
-endfunc
-
-
-"" Returns "[-]" if the function is not 'modifiable',
-"" "---" if it has not been 'modified', and "[+]" if it has.
-func! vimrc#IsModifiedStatus()
-  if !&modifiable
-    return '[-]'
-  elseif &modified
-    return '[+]'
-  else
-    return '---'
-  endif
-endfunc
-
-"" Returns "[&filetype]" if 'filetype' is set and
-"" '---' otherwise.
-func! vimrc#FiletypeStatus()
-  if &filetype !=# ''
-    return '['.&filetype.']'
-  else
-    return '---'
-  endif
-endfunc
-
-func! vimrc#SplitWindowInDirection(...)
-  if a:0 > 1
-    echoerr 'Expected at most 1 argument, received '.a:0
-    return 0
-  elseif a:0 ==# 1
-    let l:c = a:0
-  else
-    let l:c = vimrc#InputCharTimeout()
-    if l:c is 0
-      return 0
-    endif
-  endif
-
-  if l:c ==? 'h'
-    leftabove vnew
-  elseif l:c ==? 'l'
-    rightbelow vnew
-  elseif l:c ==? 'j'
-    belowright new
-  elseif l:c ==? 'k'
-    aboveleft new
-  endif
-
-  return 1
 endfunc
 
 func! s:ModifiedMakeFile(file)

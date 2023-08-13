@@ -46,11 +46,15 @@ set grepprg=grep\ -nH\ $*
 " Buffer number and file name
 set statusline=[%n]\ %.20F
 " Whether or not the buffer's been modified
-set statusline+=\ %{vimrc#IsModifiedStatus()}
+set statusline+=\ %{vimrc#status#IsModified()}
 " 'filetype'
-set statusline+=%{vimrc#FiletypeStatus()}
+set statusline+=%{vimrc#status#Filetype()}
 " (line_number, column_number)/number_of_lines
 set statusline+=\ -\ (%04.4l,%03.3c,%05.5o)/%L
+" luasnip status
+if $USER !=# "root"
+    set statusline+=%=%{%vimrc#status#LuaSnip()%}
+end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Plugins (vim-plug)
