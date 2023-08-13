@@ -74,6 +74,7 @@ Plug 'kaarmu/typst.vim'
 Plug 'kovisoft/slimv'
 Plug 'neovim/nvim-lspconfig'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'https://github.com/sakhnik/nvim-gdb'
 call plug#end()
 endif
 
@@ -178,6 +179,11 @@ let g:paredit_leader = g:maplocalleader
 
 "" markdown-preview
 let g:mkdp_browser = 'vimb'
+
+"" nvim-gbd
+let g:nvimgdb_disable_start_keymaps = 1
+nnoremap <localleader>dd :GdbStart gdb -q<cr>
+nnoremap <localleader>dr :GdbStartRR<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" End.
