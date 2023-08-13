@@ -72,6 +72,7 @@ Plug 'HiPhish/guile.vim'
 Plug 'chlorm/vim-syntax-elvish'
 Plug 'kaarmu/typst.vim'
 Plug 'kovisoft/slimv'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 endif
 
@@ -157,6 +158,15 @@ smap <silent><expr> <c-space> luasnup#choice_active() ? '<Plug>luasnip-next-choi
 
 "" Typst
 let g:typst_cmd = "~/repos/typst/target/debug/typst"
+if $USER !=# "root"
+    lua <<
+    require('lspconfig').typst_lsp.setup {
+--        settings = {
+--            exportPdf="onType"
+--        }
+    }
+.
+endif
 
 "" Slimv
 let g:slimv_leader = g:maplocalleader
