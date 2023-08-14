@@ -316,3 +316,13 @@ func! vimrc#CmdHere(bang, cmd)
 
   exe 'normal! '.l:mode."\<c-R>a"
 endfunc
+
+function! vimrc#SetVimgrepPattern(...)
+  if a:0 == 0
+    let g:vimgrep_default_pattern = '**'
+  elseif a:0 == 1
+    let g:vimgrep_default_pattern = a:1
+  else
+    echoerr "IMPOSSIBLE"
+  endif
+endfunction
