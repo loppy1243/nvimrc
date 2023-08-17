@@ -20,15 +20,15 @@ command! -complete=file -nargs=? -bang GitDiff call <SID>GitDiff(<q-args>, <bang
 function! <SID>GitDiff(file, bang)
     if a:file ==# ''
         if a:bang
-            silent !git difftool -t nvimtab % &
+            silent !git difftool -t nvimtab -- % &
         else
-            silent !git difftool -t nvimnotab % &
+            silent !git difftool -t nvimnotab -- % &
         endif
     else
         if a:bang
-            exe "silent !git difftool -t nvimtab '".a:file."' &"
+            exe "silent !git difftool -t nvimtab -- '".a:file."' &"
         else
-            exe "silent !git difftool -t nvimnotab '".a:file."' &"
+            exe "silent !git difftool -t nvimnotab -- '".a:file."' &"
         endif
     endif
 endfunction
