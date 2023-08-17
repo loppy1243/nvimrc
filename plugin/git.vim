@@ -46,27 +46,33 @@ endfunction
 command! -nargs=+ GitDiffCmdTab call <SID>GitDiffCmd(v:true, <f-args>)
 command! -nargs=+ GitDiffCmdNoTab call <SID>GitDiffCmd(v:false, <f-args>)
 function! <SID>GitDiffCmd(tab, ...)
-    call assert_true(a:0 !=# 2, "expected two file names")
+    call assert_true(a:0 !=# 3, "expected three file names")
     let l:local = a:1
     let l:remote = a:2
+    let l:merged = a:3
 
     if a:tab
-        exe 'tabedit ' . l:local
+        exe 'tabedit ' . l:merged
     else
-        exe 'edit ' . l:local
+        exe 'edit ' . l:merged
     endif
-
     diffthis
+
+    exe 'diffsplit ' . l:remote
     setlocal ro
     setlocal bufhidden=delete
-    exe 'vert diffsplit ' . l:remote
-    setlocal noro
 
     if a:tab
-        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>tabclose<cr>
+      nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>diffoff<cr><cmd>tabclose<cr>
+
+      exe 'vert diffsplit ' . l:local
+      setlocal ro
+      setlocal bufhidden=delete
     else
-        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>DiffClose<cr>
+        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>diffoff<cr><cmd>DiffClose<cr>
     endif
+
+    exe "normal! \<c-w>j"
 endfunction
 
 command! -nargs=? -bang GitLog call <SID>GitLog(<q-args>, <bang>0)
