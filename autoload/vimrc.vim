@@ -326,3 +326,8 @@ function! vimrc#SetVimgrepPattern(...)
     echoerr "IMPOSSIBLE"
   endif
 endfunction
+
+function! vimrc#ShowTabs()
+  setlocal listchars=tab:>-
+  setlocal list
+endfunction
