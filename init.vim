@@ -176,6 +176,7 @@ endif
 let g:slimv_keybindings = 1
 let g:slimv_leader = g:maplocalleader . g:maplocalleader
 let g:paredit_leader = g:maplocalleader
+let g:slimv_browser_cmd = 'vimb'
 
 "" markdown-preview
 let g:mkdp_browser = 'vimb'
