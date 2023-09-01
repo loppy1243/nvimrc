@@ -7,97 +7,14 @@ nnoremap <leader><leader>a :!git add %<cr><cr>:echo 'Added file to index:' expan
 nnoremap <leader><leader>A :!git add -u<cr><cr>:echo 'Updated index'<cr>
 nnoremap <leader><leader>p :new<cr>:call termopen("git push")<cr>
 
+""" Git lg
+nnoremap <leader><leader>l :exe 'GitLog '..expand('%')<cr>
+nnoremap <leader><leader>L :exe 'GitLog! '..expand('%')<cr>
+nnoremap <leader><leader><c-l> :GitLog<cr>
+command! -nargs=? -bang GitLog call vimrc#Git#Log(<q-args>, <bang>0)
+
 """ Git difftool
 nnoremap <leader><leader>d :GitDiff<cr>
-nnoremap <leader><leader>D :GitDiff!<cr>
-
-""" Git lg
-nnoremap <leader><leader>l :exe 'GitLog '.expand('%')<cr>
-nnoremap <leader><leader>L :exe 'GitLog! '.expand('%')<cr>
-nnoremap <leader><leader><c-l> :GitLog<cr>
-
-command! -complete=file -nargs=? -bang GitDiff call <SID>GitDiff(<q-args>, <bang>0)
-function! <SID>GitDiff(file, bang)
-    if a:file ==# ''
-        if a:bang
-            silent !git difftool -t nvimtab -- % &
-        else
-            silent !git difftool -t nvimnotab -- % &
-        endif
-    else
-        if a:bang
-            exe "silent !git difftool -t nvimtab -- '".a:file."' &"
-        else
-            exe "silent !git difftool -t nvimnotab -- '".a:file."' &"
-        endif
-    endif
-endfunction
-
-command! -nargs=0 DiffClose call <SID>DiffClose()
-function! <SID>DiffClose()
-    let l:cur_buf = bufnr()
-    for l:buf in tabpagebuflist()
-        if l:buf !=# l:cur_buf && getbufvar(l:buf, '&diff')
-            execute 'bd ' . l:buf
-        endif
-    endfor
-endfunction
-
-command! -nargs=+ GitDiffCmdTab call <SID>GitDiffCmd(v:true, <f-args>)
-command! -nargs=+ GitDiffCmdNoTab call <SID>GitDiffCmd(v:false, <f-args>)
-function! <SID>GitDiffCmd(tab, ...)
-    call assert_true(a:0 !=# 3, "expected three file names")
-    let l:local = a:1
-    let l:remote = a:2
-    let l:merged = a:3
-
-    if a:tab
-        exe 'tabedit ' . l:merged
-    else
-        exe 'edit ' . l:merged
-    endif
-    diffthis
-
-    exe 'diffsplit ' . l:remote
-    setlocal ro
-    setlocal bufhidden=delete
-
-    if a:tab
-      nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>diffoff<cr><cmd>tabclose<cr>
-
-      exe 'vert diffsplit ' . l:local
-      setlocal ro
-      setlocal bufhidden=delete
-    else
-        nnoremap <buffer> <leader><leader>d <cmd>nunmap <buffer> <leader><leader>d<cr><cmd>diffoff<cr><cmd>DiffClose<cr>
-    endif
-
-    exe "normal! \<c-w>j"
-endfunction
-
-command! -nargs=? -bang GitLog call <SID>GitLog(<q-args>, <bang>0)
-function! <SID>GitLog(file, bang)
-    if a:bang
-        tabnew
-    else
-        new
-    endif
-
-    silent! 0file
-    file Git Log
-    setlocal buftype=nofile
-    setlocal noswapfile
-    setlocal nobuflisted
-    setlocal bufhidden=wipe
-
-    AnsiEsc
-    if a:file ==# ''
-        read !git lg --color
-    else
-        exe "read !git lg --color '".a:file."'"
-    endif
-    normal! ggdd
-
-    setlocal nomodified
-    setlocal nomodifiable
-endfunction
+command! -complete=file -nargs=? GitDiff call vimrc#Git#Diff(<q-args>)
+command! -nargs=0 DiffClose call vimrc#Git#DiffClose()
+command! -nargs=+ GitDiffCmd call vimrc#Git#DiffCmd(<f-args>)
