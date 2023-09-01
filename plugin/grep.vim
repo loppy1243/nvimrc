@@ -3,4 +3,4 @@ command! -nargs=? SetVimgrepPattern call vimrc#SetVimgrepPattern(<f-args>)
 
 nnoremap <expr> <leader>/
 \ ':lvimgrep // ' . g:vimgrep_default_pattern . '<home>'
-\ . repeat("<right>", strwidth("vimgrep /"))
+\ . repeat("<right>", strwidth("lvimgrep /"))
