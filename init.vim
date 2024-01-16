@@ -181,6 +181,15 @@ let g:nvimgdb_disable_start_keymaps = 1
 nnoremap <localleader>dd :GdbStart gdb -q<cr>
 nnoremap <localleader>dr :GdbStartRR<cr>
 
+"" C++
+if $USER !=# "root"
+  lua <<
+  require('lspconfig').clangd.setup {
+    cmd = { "clangd", "--enable-config" }
+  }
+.
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" End.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
