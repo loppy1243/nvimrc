@@ -154,12 +154,6 @@ if $USER !=# "root"
 .
     lua require("luasnip.loaders.from_lua").lazy_load({paths = vim.env.MYVIMRC:match("(.*/)") .. "luasnippets"})
 endif
-imap <silent><expr> <c-tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-tab>'
-smap <silent><expr> <c-tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<c-tab>'
-imap <silent><expr> <c-s-tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<c-s-tab>'
-smap <silent><expr> <c-s-tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<c-s-tab>'
-imap <silent><expr> <c-space> luasnup#choice_active() ? '<Plug>luasnip-next-choice' : '<c-space>'
-smap <silent><expr> <c-space> luasnup#choice_active() ? '<Plug>luasnip-next-choice' : '<c-space>'
 
 "" Typst
 let g:typst_cmd = "~/repos/typst/target/debug/typst"
