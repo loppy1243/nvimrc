@@ -1,0 +1,3 @@
+#!/bin/elvish
+
+nvr $@argv
