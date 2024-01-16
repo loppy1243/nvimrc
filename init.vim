@@ -75,6 +75,7 @@ Plug 'kovisoft/slimv'
 Plug 'neovim/nvim-lspconfig'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'https://github.com/sakhnik/nvim-gdb'
+Plug 'powerman/vim-plugin-AnsiEsc'
 call plug#end()
 endif
 
